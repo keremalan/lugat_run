@@ -5,6 +5,7 @@ import 'package:lugat_run/main.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
 import '../widgets/cards.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 String userName = '';
 String userEmail = '';
@@ -30,7 +31,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: [
             Container(
-              height: 200,
+              height: 210,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -49,8 +50,17 @@ class _RegisterPageState extends State<RegisterPage> {
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 14),
+                          padding: const EdgeInsets.only(top: 18),
                           child: SubheadText("Bilgilerinizi girin.", "#000000"),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 12, bottom: 12),
+                          child: StepProgressIndicator(
+                              totalSteps: 3,
+                            currentStep: 1,
+                            selectedColor: HexColor("#000000"),
+                            roundedEdges: Radius.circular(6),
+                          ),
                         ),
                       ],
                     ),
@@ -66,70 +76,137 @@ class _RegisterPageState extends State<RegisterPage> {
                   HeadlineText("Kişisel Bilgileriniz", "#000000"),
                   Padding(
                     padding: const EdgeInsets.only(top: 6, bottom: 27),
-                    child: Caption1Text("Lütfen bilgilerinizi girin", "#BEBEBE"),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'İsim'),
-                    onChanged: (value) {
-                      print(value);
-                      setState(() {
-                        userName = value;
-                      });
-                    },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'E-Posta'),
-                    onChanged: (value) {
-                      print(value);
-                      setState(() {
-                        userEmail = value;
-                      });
-                    },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Şifre'),
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    onChanged: (value) {
-                      print(value);
-                      setState(() {
-                        userPassword = value;
-                      });
-                    },
-                  ),
-                  TextField(
-                    decoration: InputDecoration(labelText: 'Şifre onay'),
-                    obscureText: true,
-                    enableSuggestions: false,
-                    autocorrect: false,
-                    onChanged: (value) {
-                      print(value);
-                      setState(() {
-                        userPasswordCheck = value;
-                      });
-                    },
+                    child: Caption1Text("Lütfen bilgilerinizi girin", "#4D4D4D"),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Caption1Text("İsminiz", "#BEBEBE"),
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: TextField(
+                      maxLines: 1,
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                        labelText: 'İsminiz',
+                        contentPadding: EdgeInsets.only(bottom: 8),
+                        labelStyle: TextStyle(
+                          color: HexColor("#999999"),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#D9D9D9"),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#000000"),
+                          ),
+                        ),
+                      ),
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          userName = value;
+                        });
+                      },
+                    ),
                   ),
-                  Text(userName),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Caption1Text("E-Posta adresiniz", "#BEBEBE"),
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: TextField(
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                        labelText: 'E-Postanız',
+                        contentPadding: EdgeInsets.only(bottom: 8),
+                        labelStyle: TextStyle(
+                          color: HexColor("#999999"),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#D9D9D9"),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#000000"),
+                          ),
+                        ),
+                      ),
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          userEmail = value;
+                        });
+                      },
+                    ),
                   ),
-                  Text(userEmail),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Caption1Text("Şifreniz", "#BEBEBE"),
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: TextField(
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                        labelText: 'Şifreniz',
+                        contentPadding: EdgeInsets.only(bottom: 8),
+                        labelStyle: TextStyle(
+                          color: HexColor("#999999"),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#D9D9D9"),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#000000"),
+                          ),
+                        ),
+                      ),
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          userPassword = value;
+                        });
+                      },
+                    ),
                   ),
-                  Text(userPassword),
                   Padding(
-                    padding: const EdgeInsets.only(top: 8.0),
-                    child: Caption1Text("Şifre onay", "#BEBEBE"),
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: TextField(
+                      textAlignVertical: TextAlignVertical.center,
+                      decoration: InputDecoration(
+                        labelText: 'Şifrenizi onaylayın',
+                        contentPadding: EdgeInsets.only(bottom: 8),
+                        labelStyle: TextStyle(
+                          color: HexColor("#999999"),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#D9D9D9"),
+                          ),
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: HexColor("#000000"),
+                          ),
+                        ),
+                      ),
+                      obscureText: true,
+                      enableSuggestions: false,
+                      autocorrect: false,
+                      onChanged: (value) {
+                        print(value);
+                        setState(() {
+                          userPasswordCheck = value;
+                        });
+                      },
+                    ),
                   ),
-                  Text(userPasswordCheck),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12),
+                    child: Center(
+                      child: FilledButton(90.0, "#000000", "#FFFFFF", "Devam"),
+                    ),
+                  ),
                 ],
               ),
             ),

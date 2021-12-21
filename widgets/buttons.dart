@@ -3,15 +3,18 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'texts.dart';
 
-Widget FilledButton(fillColor, buttonText) {
-  return OutlinedButton(
-    style: OutlinedButton.styleFrom(
-      backgroundColor: HexColor("${fillColor}"),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(30),
+Widget FilledButton(buttonWidth, fillColor, captionTextColor, buttonText) {
+  return SizedBox(
+    width: buttonWidth,
+    child: OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: HexColor("$fillColor"),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
       ),
+      onPressed: () {},
+      child: Caption1Text("$buttonText", "$captionTextColor"),
     ),
-    onPressed: () {},
-    child: Caption1Text("${buttonText}", "#000000"),
   );
 }

@@ -68,7 +68,7 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
                     Caption2Text("Tipografi", "#FFFFFF"),
                   ],
                 ),
-                FilledButton("#FFFFFF", "Kelime ekle"),
+                FilledButton(100.0, "#FFFFFF", "#000000" , "Kelime ekle"),
               ],
             ),
           ),
