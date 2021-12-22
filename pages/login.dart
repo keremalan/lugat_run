@@ -449,7 +449,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                  const RegisterPageStep3()),
+                                  const ForgotPasswordStep3()),
                             );
                           },
                           child: Caption1Text("Tamamla", "#FFFFFF"),
@@ -473,6 +473,84 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
   }
 }
 
+class ForgotPasswordStep3 extends StatefulWidget {
+  const ForgotPasswordStep3({Key? key}) : super(key: key);
+
+  @override
+  _ForgotPasswordStep3State createState() => _ForgotPasswordStep3State();
+}
+
+class _ForgotPasswordStep3State extends State<ForgotPasswordStep3> {
+  // for visuality
+  String userPhone = "5347437751";
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: 210,
+              decoration: BoxDecoration(
+                color: HexColor("#E5E5E5"),
+              ),
+              child: Column(
+                children: [
+                  RegisterAppBar(),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 34),
+                    child: RegisterHead(
+                        titleText: 'Şifre yenile',
+                        subheadText: 'Şifreniz yeniden belirlendi!'
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 22, right: 34, bottom: 22, left: 34),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const RegisterBodyHead(
+                    headlineText: 'Giriş ekranına dönebilirsiniz',
+                    captionText: 'Aşağıdaki buton sizi giriş sayfasına yönlendirecektir.',
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 0),
+                    child: Center(
+                      child: SizedBox(
+                        width: 120,
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            backgroundColor: HexColor("#000000"),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                  const LoginPage()),
+                            );
+                          },
+                          child: Caption1Text("Giriş Yap", "#FFFFFF"),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 
 class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {

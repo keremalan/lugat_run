@@ -26,10 +26,102 @@ class _ErrorPageState extends State<ErrorPage> {
         child: Column(
           children: [
             Container(
+              height: 210,
+              decoration: BoxDecoration(
+                color: HexColor("#E5E5E5"),
+              ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RegisterAppBar(),
-                  Text("er"),
+                   Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 34),
+                    child: Row(
+                      children: [
+                        Title1Text('Whoooops!', '#000000'),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8),
+                          child: Image.network(
+                            "https://www.upload.ee/image/13736964/smiley.png",
+                            height: 32,
+                            width: 32,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 12, right: 34, left: 34),
+                    child: SubheadText('Bir şeyler ters gitmiş olmalı.', '#000000'),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  top: 22, right: 34, bottom: 22, left: 34),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const RegisterBodyHead(
+                    headlineText: 'Bağlantı paketi yolunu şaşırmış olabilir.',
+                    captionText: 'Bu heta ekranı ile sık sık karşılaşıyorsanız lütfen bu durumu bize bildirin. Hatadan kurtulmak için Ana sayfaya dönebilirsiniz.',
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 10),
+                        child: Center(
+                          child: SizedBox(
+                            width: 100,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#FFFFFF"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const ErrorPage()),
+                                );
+                              },
+                              child: Caption1Text("Hata bildir", "#000000"),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0),
+                        child: Center(
+                          child: SizedBox(
+                            width: 140,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#000000"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const HomePage()),
+                                );
+                              },
+                              child: Caption1Text("Ana sayfaya dön", "#FFFFFF"),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
