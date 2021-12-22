@@ -165,16 +165,48 @@ class _lugat_runState extends State<lugat_run> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(right: 10),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => LoginPage()),
-                    );
-                  },
-                  child: Icon(Icons.menu),
-                ),
+              Column(
+                children: [
+                  Title3Text('Test Merkezi', '#000000'),
+                  Row(
+                    children: [
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const LoginPage()),
+                          );
+                        },
+                        child: Caption1Text("Giriş Yap Sayfası", "#FFFFFF"),
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const ErrorPage()),
+                          );
+                        },
+                        child: Caption1Text("Hata Sayfası", "#FFFFFF"),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),
