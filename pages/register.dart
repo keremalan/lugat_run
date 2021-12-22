@@ -40,30 +40,20 @@ class _RegisterPageState extends State<RegisterPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   RegisterAppBar(),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 34),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: [
-                            Title1Text("Hesap oluştur", "#000000"),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18),
-                          child: SubheadText("Bilgilerinizi girin.", "#000000"),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12, bottom: 12),
-                          child: StepProgressIndicator(
-                            totalSteps: 3,
-                            currentStep: 1,
-                            selectedColor: HexColor("#000000"),
-                            roundedEdges: Radius.circular(6),
-                          ),
-                        ),
-                      ],
+                    child: RegisterHead(
+                        titleText: 'Hesap oluştur',
+                        subheadText: 'Bilgilerinizi girin.'),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        top: 12, right: 34, bottom: 12, left: 34),
+                    child: StepProgressIndicator(
+                      totalSteps: 3,
+                      currentStep: 1,
+                      selectedColor: HexColor("#000000"),
+                      roundedEdges: Radius.circular(6),
                     ),
                   ),
                 ],
@@ -75,12 +65,9 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeadlineText("Kişisel Bilgileriniz", "#000000"),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 27),
-                    child: Caption1Text(
-                        "Hesabınızı oluşturabilmemiz için bilgilerinizi girin",
-                        "#4D4D4D"),
+                  const RegisterBodyHead(
+                    headlineText: 'Kişisel bilgileriniz',
+                    captionText: 'Hesabınızı oluşturabilmemiz için bilgilerinizi girin',
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),
@@ -269,29 +256,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 }
 
-class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
-  @override
-  Size get preferredSize => const Size.fromHeight(600);
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      backgroundColor: HexColor("#E5E5E5"),
-      elevation: 0,
-      centerTitle: false,
-      title: const Padding(
-        padding: EdgeInsets.only(left: 0),
-        child: Text(
-          "Lügat",
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
 class RegisterPageStep2 extends StatefulWidget {
   const RegisterPageStep2({Key? key}) : super(key: key);
 
@@ -320,15 +284,9 @@ class _RegisterPageStep2State extends State<RegisterPageStep2> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Title1Text("Hesap oluştur", "#000000"),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18),
-                          child:
-                              SubheadText("Onay mesajınızı alın.", "#000000"),
+                        const RegisterHead(
+                          titleText: 'Hesap oluştur',
+                          subheadText: 'Onay mesajınızı alın.',
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 12, bottom: 12),
@@ -351,12 +309,9 @@ class _RegisterPageStep2State extends State<RegisterPageStep2> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeadlineText("Onay mesajı", "#000000"),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 27),
-                    child: Caption1Text(
-                        "Mesajı hangi kanaldan almak istediğinizi seçin",
-                        "#4D4D4D"),
+                  const RegisterBodyHead(
+                      headlineText: 'Bir gönderim yolu seçin',
+                    captionText: 'Kodunuz seçtiğiniz yol üzerinden size gönderilecektir.',
                   ),
                   Caption2Text("E-Postanız", "#9D9D9D"),
                   Container(
@@ -472,15 +427,9 @@ class _RegisterPageStep3State extends State<RegisterPageStep3> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Title1Text("Hesap oluştur", "#000000"),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18),
-                          child:
-                              SubheadText("Onay mesajınızı girin.", "#000000"),
+                        const RegisterHead(
+                          titleText: 'Hesap oluştur',
+                          subheadText: 'Onay kodunuzu girin.',
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 12, bottom: 12),
@@ -503,18 +452,10 @@ class _RegisterPageStep3State extends State<RegisterPageStep3> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeadlineText("Kaydınızı tamamlayın", "#000000"),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 10),
-                    child: Caption1Text(
-                        "Size ulaştırdığımız onay mesajıdnaki kodu girin",
-                        "#4D4D4D"),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 27),
-                    child: Caption1Text(
-                        "Tamamla butonuna bastığınızda kullanıcı sözleşmesini okudunuz kabul edilir ve hesabınız oluşturulur.",
-                        "#4D4D4D"),
+                  const RegisterBodyHead(
+                    headlineText: 'Kaydınızı tamamlayın',
+                    captionText:
+                        'Kodunuzu girdiğinizde tamamla butonu aktif hale gelir. Kaydınızı tamamladığınızda kullanıcı sözleşmesini okudunuz kabul edilir ve hesabınız oluşturulur.',
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),
@@ -608,15 +549,9 @@ class _RegisterPageStep4State extends State<RegisterPageStep4> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            Title1Text("Artık hazırsınız", "#000000"),
-                          ],
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 18),
-                          child: SubheadText("Deneyime ortak olun.", "#000000"),
-                        ),
+                        const RegisterHead(
+                            titleText: 'Hesap oluştur',
+                            subheadText: 'Onay mesajınızı girin.'),
                         Padding(
                           padding: const EdgeInsets.only(top: 12, bottom: 12),
                           child: StepProgressIndicator(
@@ -638,13 +573,10 @@ class _RegisterPageStep4State extends State<RegisterPageStep4> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  HeadlineText("Kaydınız tamamlandı", "#000000"),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 6, bottom: 27),
-                    child: Caption1Text(
-                        "Topluluğa katkı sunabilir ve sunulan katkılar için oy kullanabilirsiniz.",
-                        "#4D4D4D"),
-                  ),
+                  const RegisterBodyHead(
+                      headlineText: 'Kaydınız tamamlandı',
+                      captionText:
+                          'Topluluğa katkı sunabilir ve sunulan katkılar için oy kullanabilirsiniz.'),
                   Center(
                     child: SizedBox(
                       width: 120,
@@ -670,6 +602,85 @@ class _RegisterPageStep4State extends State<RegisterPageStep4> {
               ),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+// Widgets
+
+class RegisterBodyHead extends StatelessWidget {
+  const RegisterBodyHead({
+    Key? key,
+    required this.headlineText,
+    required this.captionText,
+  }) : super(key: key);
+
+  final String headlineText;
+  final String captionText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        HeadlineText("$headlineText", "#000000"),
+        Padding(
+          padding: const EdgeInsets.only(top: 6, bottom: 27),
+          child: Caption1Text("$captionText", "#4D4D4D"),
+        ),
+      ],
+    );
+  }
+}
+
+class RegisterHead extends StatelessWidget {
+  const RegisterHead({
+    Key? key,
+    required this.titleText,
+    required this.subheadText,
+  }) : super(key: key);
+
+  final String titleText;
+  final String subheadText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Title1Text("$titleText", "#000000"),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 18),
+          child: SubheadText("$subheadText", "#000000"),
+        ),
+      ],
+    );
+  }
+}
+
+class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
+  @override
+  Size get preferredSize => const Size.fromHeight(600);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: HexColor("#E5E5E5"),
+      elevation: 0,
+      centerTitle: false,
+      title: const Padding(
+        padding: EdgeInsets.only(left: 0),
+        child: Text(
+          "Lügat",
+          style: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
     );
