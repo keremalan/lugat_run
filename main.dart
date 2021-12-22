@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:lugat_run/pages/error.dart';
 import 'widgets/texts.dart';
 import 'widgets/buttons.dart';
 import 'widgets/cards.dart';
 import './pages/register.dart';
+import './pages/login.dart';
+import './pages/error.dart';
 
 void main() => runApp(lugat_run());
 
@@ -58,6 +61,8 @@ class _lugat_runState extends State<lugat_run> {
       initialRoute: '/',
       routes: {
         '/register': (context) => const RegisterPage(),
+        '/login': (context) => const LoginPage(),
+        '/error': (context) => const ErrorPage(),
       },
       theme: MyAppThemes.appThemeLight(),
       home: Scaffold(
@@ -160,6 +165,17 @@ class _lugat_runState extends State<lugat_run> {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(right: 10),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => LoginPage()),
+                    );
+                  },
+                  child: Icon(Icons.menu),
+                ),
+              ),
             ],
           ),
         ),
@@ -199,7 +215,7 @@ class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
             },
             child: Icon(Icons.menu),
           ),
-        )
+        ),
       ],
     );
   }
