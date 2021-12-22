@@ -62,3 +62,58 @@ class RegisterAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
+
+
+class RegisterBodyHead extends StatelessWidget {
+  const RegisterBodyHead({
+    Key? key,
+    required this.headlineText,
+    required this.captionText,
+  }) : super(key: key);
+
+  final String headlineText;
+  final String captionText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        HeadlineText("$headlineText", "#000000"),
+        Padding(
+          padding: const EdgeInsets.only(top: 6, bottom: 27),
+          child: Caption1Text("$captionText", "#4D4D4D"),
+        ),
+      ],
+    );
+  }
+}
+
+class RegisterHead extends StatelessWidget {
+  const RegisterHead({
+    Key? key,
+    required this.titleText,
+    required this.subheadText,
+  }) : super(key: key);
+
+  final String titleText;
+  final String subheadText;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Title1Text("$titleText", "#000000"),
+          ],
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 18),
+          child: SubheadText("$subheadText", "#000000"),
+        ),
+      ],
+    );
+  }
+}

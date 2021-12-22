@@ -65,151 +65,167 @@ class _lugat_runState extends State<lugat_run> {
         '/error': (context) => const ErrorPage(),
       },
       theme: MyAppThemes.appThemeLight(),
-      home: Scaffold(
-        appBar: LugatAppBar(),
-        body: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SearchBar("Aramak istediğiniz terimi girin"),
-              Padding(
-                padding: EdgeInsets.only(top: 32, bottom: 8),
-                child: DescriptionText("Öne çıkan kategoriler"),
+      home: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: LugatAppBar(),
+      body: SingleChildScrollView(
+        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SearchBar("Aramak istediğiniz terimi girin"),
+            Padding(
+              padding: EdgeInsets.only(top: 32, bottom: 8),
+              child: DescriptionText("Öne çıkan kategoriler"),
+            ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  PopularCategoryCard(
+                    "https://www.upload.ee/image/13731286/ai.png",
+                    "Yapay Zeka",
+                  ),
+                  PopularCategoryCard(
+                    "https://www.upload.ee/image/13731286/ai.png",
+                    "Pamuk Zeka",
+                  ),
+                  PopularCategoryCard(
+                    "https://www.upload.ee/image/13731286/ai.png",
+                    "Demir Zeka",
+                  ),
+                  PopularCategoryCard(
+                    "https://www.upload.ee/image/13731286/ai.png",
+                    "Über Zeka",
+                  ),
+                  PopularCategoryCard(
+                    "https://www.upload.ee/image/13731286/ai.png",
+                    "Fahri Zeka",
+                  ),
+                  PopularCategoryCard(
+                    "https://www.upload.ee/image/13731286/ai.png",
+                    "Soyut Zeka",
+                  ),
+                ],
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    PopularCategoryCard(
-                      "https://www.upload.ee/image/13731286/ai.png",
-                      "Yapay Zeka",
-                    ),
-                    PopularCategoryCard(
-                      "https://www.upload.ee/image/13731286/ai.png",
-                      "Pamuk Zeka",
-                    ),
-                    PopularCategoryCard(
-                      "https://www.upload.ee/image/13731286/ai.png",
-                      "Demir Zeka",
-                    ),
-                    PopularCategoryCard(
-                      "https://www.upload.ee/image/13731286/ai.png",
-                      "Über Zeka",
-                    ),
-                    PopularCategoryCard(
-                      "https://www.upload.ee/image/13731286/ai.png",
-                      "Fahri Zeka",
-                    ),
-                    PopularCategoryCard(
-                      "https://www.upload.ee/image/13731286/ai.png",
-                      "Soyut Zeka",
-                    ),
-                  ],
-                ),
+            ),
+            CategoryCard("Tasarım", "128",
+                "https://www.upload.ee/image/13731805/designCategory.png"),
+            Padding(
+              padding: const EdgeInsets.only(top: 32, bottom: 2),
+              child: DescriptionText("Kategoriler"),
+            ),
+            CategoryTitle("Tasarım"),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Prototip",
+                      "Kerem Alan"),
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Frototip",
+                      "Gökhan Falan"),
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Brototip",
+                      "Türkmen Köyhan"),
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Krototip",
+                      "Uğur Taylan"),
+                ],
               ),
-              CategoryCard("Tasarım", "128",
-                  "https://www.upload.ee/image/13731805/designCategory.png"),
-              Padding(
-                padding: const EdgeInsets.only(top: 32, bottom: 2),
-                child: DescriptionText("Kategoriler"),
-              ),
-              CategoryTitle("Tasarım"),
-              SingleChildScrollView(
+            ),
+            CategoryTitle("Yazılım"),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 18),
+              child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
                     CategoryTermCard(
-                        "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                        "https://www.upload.ee/image/13731960/softwareTerm.png",
                         "Prototip",
                         "Kerem Alan"),
                     CategoryTermCard(
-                        "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                        "https://www.upload.ee/image/13731960/softwareTerm.png",
                         "Frototip",
                         "Gökhan Falan"),
                     CategoryTermCard(
-                        "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                        "https://www.upload.ee/image/13731960/softwareTerm.png",
                         "Brototip",
                         "Türkmen Köyhan"),
                     CategoryTermCard(
-                        "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                        "https://www.upload.ee/image/13731960/softwareTerm.png",
                         "Krototip",
                         "Uğur Taylan"),
                   ],
                 ),
               ),
-              CategoryTitle("Yazılım"),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 18),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      CategoryTermCard(
-                          "https://www.upload.ee/image/13731960/softwareTerm.png",
-                          "Prototip",
-                          "Kerem Alan"),
-                      CategoryTermCard(
-                          "https://www.upload.ee/image/13731960/softwareTerm.png",
-                          "Frototip",
-                          "Gökhan Falan"),
-                      CategoryTermCard(
-                          "https://www.upload.ee/image/13731960/softwareTerm.png",
-                          "Brototip",
-                          "Türkmen Köyhan"),
-                      CategoryTermCard(
-                          "https://www.upload.ee/image/13731960/softwareTerm.png",
-                          "Krototip",
-                          "Uğur Taylan"),
-                    ],
-                  ),
+            ),
+            Column(
+              children: [
+                Title3Text('Test Merkezi', '#000000'),
+                Row(
+                  children: [
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: HexColor("#000000"),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const LoginPage()),
+                        );
+                      },
+                      child: Caption1Text("Giriş Yap Sayfası", "#FFFFFF"),
+                    ),
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: HexColor("#000000"),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const ErrorPage()),
+                        );
+                      },
+                      child: Caption1Text("Hata Sayfası", "#FFFFFF"),
+                    ),
+                  ],
                 ),
-              ),
-              Column(
-                children: [
-                  Title3Text('Test Merkezi', '#000000'),
-                  Row(
-                    children: [
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          backgroundColor: HexColor("#000000"),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const LoginPage()),
-                          );
-                        },
-                        child: Caption1Text("Giriş Yap Sayfası", "#FFFFFF"),
-                      ),
-                      OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          backgroundColor: HexColor("#000000"),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const ErrorPage()),
-                          );
-                        },
-                        child: Caption1Text("Hata Sayfası", "#FFFFFF"),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
+              ],
+            ),
+          ],
         ),
       ),
     );
