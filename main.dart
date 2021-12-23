@@ -3,6 +3,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/homeside.dart';
+import 'package:lugat_run/pages/profile.dart';
 import 'widgets/texts.dart';
 import 'widgets/cards.dart';
 import './pages/register.dart';
@@ -189,65 +190,85 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
-            Column(
-              children: [
-                Title3Text('Test Merkezi', '#000000'),
-                Row(
-                  children: [
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: HexColor("#000000"),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Column(
+                children: [
+                  Title3Text('Test Merkezi', '#000000'),
+                  Row(
+                    children: [
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const LoginPage()),
+                          );
+                        },
+                        child: Caption1Text("Giriş Yap Sayfası", "#FFFFFF"),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                              const LoginPage()),
-                        );
-                      },
-                      child: Caption1Text("Giriş Yap Sayfası", "#FFFFFF"),
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: HexColor("#000000"),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const ErrorPage()),
+                          );
+                        },
+                        child: Caption1Text("Hata Sayfası", "#FFFFFF"),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                              const ErrorPage()),
-                        );
-                      },
-                      child: Caption1Text("Hata Sayfası", "#FFFFFF"),
-                    ),
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        backgroundColor: HexColor("#000000"),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const ProfilePage()),
+                          );
+                        },
+                        child: Caption1Text("Profil Sayfası", "#FFFFFF"),
                       ),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                              const RegisterPage()),
-                        );
-                      },
-                      child: Caption1Text("Kayıt Sayfası", "#FFFFFF"),
-                    ),
-                  ],
-                ),
-              ],
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const RegisterPage()),
+                          );
+                        },
+                        child: Caption1Text("Kayıt Sayfası", "#FFFFFF"),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ],
         ),
