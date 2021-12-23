@@ -67,7 +67,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   const RegisterBodyHead(
                     headlineText: 'Kişisel bilgileriniz',
-                    captionText: 'Hesabınızı oluşturabilmemiz için bilgilerinizi girin',
+                    captionText:
+                        'Hesabınızı oluşturabilmemiz için bilgilerinizi girin',
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 16),
@@ -301,6 +302,115 @@ class _RegisterPageStep2State extends State<RegisterPageStep2> {
                     ),
                   ),
                 ],
+              ),
+            ),
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 22, right: 34, bottom: 22, left: 34),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const RegisterBodyHead(
+                            headlineText: 'Bir gönderim yolu seçin',
+                            captionText:
+                                'Kodunuz seçtiğiniz yol üzerinden size gönderilecektir.',
+                          ),
+                          Caption2Text("E-Postanız", "#9D9D9D"),
+                          Container(
+                            width: 358,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: HexColor("#D9D9D9"),
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    userEmail,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  FilledButton(
+                                      80.0, "#FFFFFF", "#000000", "Gönder"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: Caption2Text("Telefon numaranız", "#9D9D9D"),
+                          ),
+                          Container(
+                            width: 358,
+                            decoration: BoxDecoration(
+                              border: Border(
+                                bottom: BorderSide(
+                                  color: HexColor("#D9D9D9"),
+                                  width: 1,
+                                ),
+                              ),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    userPhone,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  FilledButton(
+                                      80.0, "#FFFFFF", "#000000", "Gönder"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12),
+                            child: Center(
+                              child: SizedBox(
+                                width: 120,
+                                child: OutlinedButton(
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor: HexColor("#000000"),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const RegisterPageStep3()),
+                                    );
+                                  },
+                                  child: Caption1Text("Devam", "#FFFFFF"),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

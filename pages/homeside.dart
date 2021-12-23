@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
+import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
+
+String feedbackSubject = '';
+String feedbackMessage = '';
 
 
 class HomeSide extends StatefulWidget {
@@ -112,21 +116,275 @@ class _FeedbackPageState extends State<FeedbackPage> {
           child: Column(
             children: [
               Container(
+                height: 200,
                 decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor('#D9D9D9'),
-                    ),
-                  ),
+                  color: HexColor("#E5E5E5"),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LugatAppBar(),
+                    RegisterAppBar(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(),
+                    ),
                   ],
                 ),
               ),
-              Title2Text('Feedback', '#000000'),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 12, left: 34),
+                child: Column(
+                  children: [
+                    RegisterBodyHead(headlineText: 'Deneyimlerinizi paylaşın', captionText: 'Hoşunuza giden deneyiminizi, karşılaştığınız hataları ya da eklenmesini istediğiniz özellikleri bize aktarabilirsiniz. Bu sayede deneyimlerinizi zenginleştirmeye devam edeceğiz.'),
+                  ],
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: 'Konu',
+                            contentPadding: EdgeInsets.only(bottom: 8),
+                            labelStyle: TextStyle(
+                              color: HexColor("#999999"),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#D9D9D9"),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#000000"),
+                              ),
+                            ),
+                          ),
+                          onChanged: (value) {
+                            print(value);
+                            setState(() {
+                              feedbackSubject = value;
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: 'Mesaj',
+                            contentPadding: EdgeInsets.only(bottom: 8),
+                            labelStyle: TextStyle(
+                              color: HexColor("#999999"),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#D9D9D9"),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#000000"),
+                              ),
+                            ),
+                          ),
+                          onChanged: (value) {
+                            print(value);
+                            setState(() {
+                              feedbackMessage = value;
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Center(
+                          child: SizedBox(
+                            width: 100,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#000000"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const FeedbackSuccessPage()),
+                                );
+                              },
+                              child: Caption1Text("Gönder", "#FFFFFF"),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FeedbackSuccessPage extends StatefulWidget {
+  const FeedbackSuccessPage({Key? key}) : super(key: key);
+
+  @override
+  _FeedbackSuccessPageState createState() => _FeedbackSuccessPageState();
+}
+
+class _FeedbackSuccessPageState extends State<FeedbackSuccessPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: HexColor("#E5E5E5"),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RegisterAppBar(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 12, left: 34),
+                child: Column(
+                  children: [
+                    RegisterBodyHead(headlineText: 'Geri bildiriminiz ekibimize ulaştı!', captionText: 'Topluluğumuzun gelişmesine katkı sağladığın için teşekkür ederiz. Bildiriminin bir kopyasını aşağıya bıraktık.'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 34),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BodyText("Konu", "#9D9D9D"),
+                  ],
+                ),
+              ),
+              Container(
+                width: 358,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: HexColor("#D9D9D9"),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12, bottom: 8),
+                        child: Flexible(
+                          child: Text(
+                            feedbackSubject,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, left: 34),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BodyText("Mesaj", "#9D9D9D"),
+                  ],
+                ),
+              ),
+              Container(
+                width: 358,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: HexColor("#D9D9D9"),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12, bottom: 8),
+                          child: Text(
+                            feedbackMessage,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Center(
+                  child: SizedBox(
+                    width: 120,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: HexColor("#000000"),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const HomePage()),
+                        );
+                      },
+                      child: Caption1Text("Ana sayfa", "#FFFFFF"),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -347,6 +605,30 @@ class RegisterBodyHead extends StatelessWidget {
     );
   }
 }
+
+class HomeSideHead extends StatelessWidget {
+  const HomeSideHead({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 34),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Title1Text('Geri bildirim', '#000000'),
+            Padding(
+              padding: const EdgeInsets.only(top: 14),
+              child: StepProgressIndicator(totalSteps: 1, currentStep: 1, selectedColor: HexColor('#000000'), roundedEdges: Radius.circular(30),),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 class RegisterHead extends StatelessWidget {
   const RegisterHead({
