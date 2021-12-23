@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/pages/error.dart';
+import 'package:lugat_run/pages/homeside.dart';
 import 'widgets/texts.dart';
 import 'widgets/buttons.dart';
 import 'widgets/cards.dart';
@@ -221,6 +222,23 @@ class _HomePageState extends State<HomePage> {
                       },
                       child: Caption1Text("Hata Sayfası", "#FFFFFF"),
                     ),
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: HexColor("#000000"),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const RegisterPage()),
+                        );
+                      },
+                      child: Caption1Text("Kayıt Sayfası", "#FFFFFF"),
+                    ),
                   ],
                 ),
               ],
@@ -258,7 +276,7 @@ class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => RegisterPage()),
+                  builder: (context) => HomeSide()),
               );
             },
             child: Icon(Icons.menu),
