@@ -8,6 +8,7 @@ import 'widgets/cards.dart';
 import './pages/register.dart';
 import './pages/login.dart';
 import './pages/error.dart';
+import 'package:sizer/sizer.dart';
 
 void main() => runApp(const Lugat_Run());
 
@@ -60,17 +61,19 @@ class Lugat_Run extends StatefulWidget {
 class _Lugat_RunState extends State<Lugat_Run> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/register': (context) => const RegisterPage(),
-        '/login': (context) => const LoginPage(),
-        '/error': (context) => const ErrorPage(),
-      },
-      theme: MyAppThemes.appThemeLight(),
-      home: const HomePage(),
-    );
+    return Sizer(builder: (context, orientation, deviceType){
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        initialRoute: '/',
+        routes: {
+          '/register': (context) => const RegisterPage(),
+          '/login': (context) => const LoginPage(),
+          '/error': (context) => const ErrorPage(),
+        },
+        theme: MyAppThemes.appThemeLight(),
+        home: const HomePage(),
+      );
+    },);
   }
 }
 
@@ -307,8 +310,8 @@ Widget SearchBar(placeHold) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
-      SizedBox(
-        width: 380,
+      Container(
+        width: 87.2.w,
         height: 40,
         child: CupertinoSearchTextField(
           placeholder: "$placeHold",

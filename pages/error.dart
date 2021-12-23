@@ -203,7 +203,7 @@ class RegisterHead extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 18),
-          child: SubheadText("$subheadText", "#000000"),
+          child: BodyText("$subheadText", "#000000"),
         ),
       ],
     );

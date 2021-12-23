@@ -6,6 +6,7 @@ import 'package:lugat_run/main.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
+import 'package:sizer/sizer.dart';
 
 String feedbackSubject = '';
 String feedbackMessage = '';
@@ -120,7 +121,7 @@ class _FeedbackPageState extends State<FeedbackPage> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 22.6.h,
                 decoration: BoxDecoration(
                   color: HexColor("#E5E5E5"),
                 ),
@@ -262,7 +263,7 @@ class _FeedbackSuccessPageState extends State<FeedbackSuccessPage> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 22.6.h,
                 decoration: BoxDecoration(
                   color: HexColor("#E5E5E5"),
                 ),
@@ -285,78 +286,85 @@ class _FeedbackSuccessPageState extends State<FeedbackSuccessPage> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 34),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BodyText("Konu", "#9D9D9D"),
-                  ],
-                ),
-              ),
               Container(
-                width: 358,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor("#D9D9D9"),
-                      width: 1,
-                    ),
-                  ),
-                ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 12, bottom: 8),
-                        child: Flexible(
-                          child: Text(
-                            feedbackSubject,
-                            style: TextStyle(
-                              fontSize: 16,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BodyText("Konu", "#9D9D9D"),
+                        ],
+                      ),
+                      Container(
+                        width: 358,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                              width: 1,
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 22, right: 34, left: 34),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BodyText("Mesaj", "#9D9D9D"),
-                  ],
-                ),
-              ),
-              Container(
-                width: 358,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor("#D9D9D9"),
-                      width: 1,
-                    ),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 12, bottom: 8),
-                          child: Text(
-                            feedbackMessage,
-                            style: TextStyle(
-                              fontSize: 16,
+                          padding: const EdgeInsets.only(top: 0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 12, bottom: 8),
+                                  child: Text(
+                                    feedbackSubject,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 22),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BodyText("Mesaj", "#9D9D9D"),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 358,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                              width: 1,
                             ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 12, bottom: 8),
+                                  child: Text(
+                                    feedbackMessage,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -416,7 +424,7 @@ class _HelpPageState extends State<HelpPage> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 22.6.h,
                 decoration: BoxDecoration(
                   color: HexColor("#E5E5E5"),
                 ),
@@ -518,7 +526,7 @@ class _ReportPageState extends State<ReportPage> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 22.6.h,
                 decoration: BoxDecoration(
                   color: HexColor("#E5E5E5"),
                 ),
@@ -689,7 +697,7 @@ class _ReportSuccessPageState extends State<ReportSuccessPage> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 22.6.h,
                 decoration: BoxDecoration(
                   color: HexColor("#E5E5E5"),
                 ),
@@ -712,118 +720,122 @@ class _ReportSuccessPageState extends State<ReportSuccessPage> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 34),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BodyText("İhlal türü", "#9D9D9D"),
-                  ],
-                ),
-              ),
               Container(
-                width: 358,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor("#D9D9D9"),
-                      width: 1,
-                    ),
-                  ),
-                ),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  child: Column(
                     children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BodyText("İhlal türü", "#9D9D9D"),
+                        ],
+                      ),
+                      Container(
+                        width: 358,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                              width: 1,
+                            ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 12, bottom: 8),
+                                  child: Text(
+                                    reportCategory,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 12, bottom: 8),
-                        child: Flexible(
-                          child: Text(
-                            reportCategory,
-                            style: TextStyle(
-                              fontSize: 16,
+                        padding: const EdgeInsets.only(top: 22),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BodyText("İhlal açıklaması", "#9D9D9D"),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 358,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                              width: 1,
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 22, right: 34, left: 34),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BodyText("İhlal açıklaması", "#9D9D9D"),
-                  ],
-                ),
-              ),
-              Container(
-                width: 358,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor("#D9D9D9"),
-                      width: 1,
-                    ),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
                         child: Padding(
-                          padding: const EdgeInsets.only(top: 12, bottom: 8),
-                          child: Text(
-                            reportMessage,
-                            style: TextStyle(
-                              fontSize: 16,
-                            ),
+                          padding: const EdgeInsets.only(top: 0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 12, bottom: 8),
+                                  child: Text(
+                                    reportMessage,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 22, right: 34, left: 34),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BodyText("İhlal kanıtı", "#9D9D9D"),
-                  ],
-                ),
-              ),
-              Container(
-                width: 358,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor("#D9D9D9"),
-                      width: 1,
-                    ),
-                  ),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 0),
-                  child: Row(
-                    mainAxisAlignment:
-                    MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 12, bottom: 8),
-                          child: Text(
-                            reportUpload,
-                            style: TextStyle(
-                              fontSize: 16,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 22),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            BodyText("İhlal kanıtı", "#9D9D9D"),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: 358,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                              width: 1,
                             ),
+                          ),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 0),
+                          child: Row(
+                            mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 12, bottom: 8),
+                                child: Text(
+                                  reportUpload,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
@@ -883,7 +895,7 @@ class _RoadMapPageState extends State<RoadMapPage> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: 22.6.h,
                 decoration: BoxDecoration(
                   color: HexColor("#E5E5E5"),
                 ),
@@ -1013,7 +1025,7 @@ class HomeSideItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 24),
       child: Row(
         children: [
           Padding(

@@ -6,6 +6,7 @@ import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
 import '../widgets/cards.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
+import 'package:sizer/sizer.dart';
 
 String userName = '';
 String userEmail = '';
@@ -32,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -272,7 +273,7 @@ class _RegisterPageStep2State extends State<RegisterPageStep2> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -435,7 +436,7 @@ class _RegisterPageStep3State extends State<RegisterPageStep3> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -557,7 +558,7 @@ class _RegisterPageStep4State extends State<RegisterPageStep4> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -678,7 +679,7 @@ class RegisterHead extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 18),
-          child: SubheadText("$subheadText", "#000000"),
+          child: BodyText("$subheadText", "#000000"),
         ),
       ],
     );

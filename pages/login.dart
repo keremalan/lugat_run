@@ -5,6 +5,7 @@ import 'package:lugat_run/main.dart';
 import 'package:lugat_run/pages/register.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
+import 'package:sizer/sizer.dart';
 
 String userName = '';
 String userEmail = '';
@@ -27,7 +28,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: [
             Container(
-              height: 200,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -178,7 +179,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -314,7 +315,7 @@ class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -490,7 +491,7 @@ class _ForgotPasswordStep3State extends State<ForgotPasswordStep3> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 25.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
@@ -624,7 +625,7 @@ class RegisterHead extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.only(top: 18),
-          child: SubheadText("$subheadText", "#000000"),
+          child: BodyText("$subheadText", "#000000"),
         ),
       ],
     );
