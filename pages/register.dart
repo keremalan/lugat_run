@@ -612,7 +612,7 @@ class _RegisterPageStep4State extends State<RegisterPageStep4> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => lugat_run()),
+                                builder: (context) => Lugat_Run()),
                           );
                         },
                         child: Caption1Text("Tamamla", "#FFFFFF"),

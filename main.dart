@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/homeside.dart';
 import 'widgets/texts.dart';
-import 'widgets/buttons.dart';
 import 'widgets/cards.dart';
 import './pages/register.dart';
 import './pages/login.dart';
 import './pages/error.dart';
 
-void main() => runApp(lugat_run());
+void main() => runApp(const Lugat_Run());
 
 // Themes
 
@@ -49,12 +48,16 @@ class MyAppThemes {
 
 // Home Page
 
-class lugat_run extends StatefulWidget {
+// ignore: camel_case_types
+class Lugat_Run extends StatefulWidget {
+  const Lugat_Run({Key? key}) : super(key: key);
+
   @override
-  _lugat_runState createState() => _lugat_runState();
+  _Lugat_RunState createState() => _Lugat_RunState();
 }
 
-class _lugat_runState extends State<lugat_run> {
+// ignore: camel_case_types
+class _Lugat_RunState extends State<Lugat_Run> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -66,7 +69,7 @@ class _lugat_runState extends State<lugat_run> {
         '/error': (context) => const ErrorPage(),
       },
       theme: MyAppThemes.appThemeLight(),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
@@ -84,15 +87,15 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: LugatAppBar(),
+      appBar: const LugatAppBar(),
       body: SingleChildScrollView(
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SearchBar("Aramak istediğiniz terimi girin"),
             Padding(
-              padding: EdgeInsets.only(top: 32, bottom: 8),
+              padding: const EdgeInsets.only(top: 32, bottom: 8),
               child: DescriptionText("Öne çıkan kategoriler"),
             ),
             SingleChildScrollView(
@@ -253,6 +256,8 @@ class _HomePageState extends State<HomePage> {
 // App Bar
 
 class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const LugatAppBar({Key? key}) : super(key: key);
+
   @override
   Size get preferredSize => const Size.fromHeight(60);
 
@@ -276,10 +281,10 @@ class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
-                  builder: (context) => HomeSide()),
+                  builder: (context) => const HomeSide()),
               );
             },
-            child: Icon(Icons.menu),
+            child: const Icon(Icons.menu),
           ),
         ),
       ],
@@ -289,7 +294,7 @@ class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
 
 Widget DescriptionText(descText) {
   return Text(
-      "${descText}".toUpperCase(),
+      "$descText".toUpperCase(),
       style: TextStyle(
         fontSize: 12,
         height: 0.2,
@@ -306,7 +311,7 @@ Widget SearchBar(placeHold) {
         width: 380,
         height: 40,
         child: CupertinoSearchTextField(
-          placeholder: "${placeHold}",
+          placeholder: "$placeHold",
           onChanged: (String value) {
             print('The text has changed to: $value');
           },

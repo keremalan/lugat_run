@@ -85,17 +85,17 @@ Widget Title3Text(text, hexColor) {
 
 Widget Title2Text(text, hexColor) {
   return Text(
-    "${text}",
+    "$text",
     style: TextStyle(
       fontSize: 22,
-      color: HexColor("${hexColor}"),
+      color: HexColor("$hexColor"),
     ),
   );
 }
 
 Widget Title1Text(text, hexColor) {
   return Text(
-    "${text}",
+    "$text",
     style: TextStyle(
       fontSize: 28,
       color: HexColor("${hexColor}"),

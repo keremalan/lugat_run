@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
@@ -8,6 +9,9 @@ import '../widgets/texts.dart';
 
 String feedbackSubject = '';
 String feedbackMessage = '';
+String reportCategory = '';
+String reportMessage = '';
+String reportUpload = '';
 
 
 class HomeSide extends StatefulWidget {
@@ -124,9 +128,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RegisterAppBar(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
-                      child: HomeSideHead(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(pageTitle: 'Geri bildirim'),
                     ),
                   ],
                 ),
@@ -266,9 +270,9 @@ class _FeedbackSuccessPageState extends State<FeedbackSuccessPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     RegisterAppBar(),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
-                      child: HomeSideHead(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(pageTitle: 'Geri bildirim',),
                     ),
                   ],
                 ),
@@ -412,21 +416,81 @@ class _HelpPageState extends State<HelpPage> {
           child: Column(
             children: [
               Container(
+                height: 200,
                 decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor('#D9D9D9'),
-                    ),
-                  ),
+                  color: HexColor("#E5E5E5"),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LugatAppBar(),
+                    RegisterAppBar(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(pageTitle: 'Yardım sayfası'),
+                    ),
                   ],
                 ),
               ),
-              Title2Text('HelpPage', '#000000'),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 12, left: 34),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    RegisterBodyHead(headlineText: 'S.S.S', captionText: 'Sıkça sorular sorulara erişmek için dokunun.'),
+                  ],
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      HeadlineText('İletişim', '#000000'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: SubheadText('E-Posta', '#505050'),
+                      ),
+                      BodyText('iletisim@lugat.io', '#909090'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: SubheadText('Telefon', '#505050'),
+                      ),
+                      BodyText('0(212) 222-22-22', '#909090'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: SubheadText('Adres', '#505050'),
+                      ),
+                      BodyText('Şişli Kolektif House, Nu: 17, Şişli/İstanbul', '#909090'),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 32),
+                        child: Center(
+                          child: SizedBox(
+                            width: 100,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#000000"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const HomePage()),
+                                );
+                              },
+                              child: Caption1Text("Ana Sayfa", "#FFFFFF"),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -454,21 +518,344 @@ class _ReportPageState extends State<ReportPage> {
           child: Column(
             children: [
               Container(
+                height: 200,
                 decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor('#D9D9D9'),
-                    ),
-                  ),
+                  color: HexColor("#E5E5E5"),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LugatAppBar(),
+                    RegisterAppBar(),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(pageTitle: 'İhlal bildirimi'),
+                    ),
                   ],
                 ),
               ),
-              Title2Text('Report Page', '#000000'),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 12, left: 34),
+                child: Column(
+                  children: [
+                    RegisterBodyHead(headlineText: 'Acil ihlal müdahalesi', captionText: 'Topluluk kurallarını ihlal ettiğini düşündüğünüz içerikleri doğrudan bize bildirebilir, acil müdahale ekibimizin ihlali değerlendirmesini sağlayabilirsiniz.'),
+                  ],
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: 'İhlal Türü',
+                            contentPadding: EdgeInsets.only(bottom: 8),
+                            labelStyle: TextStyle(
+                              color: HexColor("#999999"),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#D9D9D9"),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#000000"),
+                              ),
+                            ),
+                          ),
+                          onChanged: (value) {
+                            print(value);
+                            setState(() {
+                              reportCategory = value;
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: 'İhlal açıklaması',
+                            contentPadding: EdgeInsets.only(bottom: 8),
+                            labelStyle: TextStyle(
+                              color: HexColor("#999999"),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#D9D9D9"),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#000000"),
+                              ),
+                            ),
+                          ),
+                          onChanged: (value) {
+                            print(value);
+                            setState(() {
+                              reportMessage = value;
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: TextField(
+                          textAlignVertical: TextAlignVertical.center,
+                          decoration: InputDecoration(
+                            labelText: 'Görsel yüklemek için dokunun',
+                            contentPadding: EdgeInsets.only(bottom: 8),
+                            labelStyle: TextStyle(
+                              color: HexColor("#999999"),
+                            ),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#D9D9D9"),
+                              ),
+                            ),
+                            focusedBorder: UnderlineInputBorder(
+                              borderSide: BorderSide(
+                                color: HexColor("#000000"),
+                              ),
+                            ),
+                          ),
+                          onChanged: (value) {
+                            print(value);
+                            setState(() {
+                              reportUpload = value;
+                            });
+                          },
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12),
+                        child: Center(
+                          child: SizedBox(
+                            width: 100,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#000000"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const ReportSuccessPage()),
+                                );
+                              },
+                              child: Caption1Text("Gönder", "#FFFFFF"),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ReportSuccessPage extends StatefulWidget {
+  const ReportSuccessPage({Key? key}) : super(key: key);
+
+  @override
+  _ReportSuccessPageState createState() => _ReportSuccessPageState();
+}
+
+class _ReportSuccessPageState extends State<ReportSuccessPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                  color: HexColor("#E5E5E5"),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RegisterAppBar(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(pageTitle: 'İhlal bildirimi',),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 12, left: 34),
+                child: Column(
+                  children: [
+                    RegisterBodyHead(headlineText: 'İhlal bildiriminiz müdahale ekibine ulaştı!', captionText: 'Topluluğumuzun değerlerini korumamıza yardımcı olduğun için teşekkür ederiz. Bildiriminin bir kopyasını aşağıya bıraktık.'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 34),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BodyText("İhlal türü", "#9D9D9D"),
+                  ],
+                ),
+              ),
+              Container(
+                width: 358,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: HexColor("#D9D9D9"),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12, bottom: 8),
+                        child: Flexible(
+                          child: Text(
+                            reportCategory,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, left: 34),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BodyText("İhlal açıklaması", "#9D9D9D"),
+                  ],
+                ),
+              ),
+              Container(
+                width: 358,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: HexColor("#D9D9D9"),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12, bottom: 8),
+                          child: Text(
+                            reportMessage,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, left: 34),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BodyText("İhlal kanıtı", "#9D9D9D"),
+                  ],
+                ),
+              ),
+              Container(
+                width: 358,
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: HexColor("#D9D9D9"),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 0),
+                  child: Row(
+                    mainAxisAlignment:
+                    MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12, bottom: 8),
+                          child: Text(
+                            reportUpload,
+                            style: TextStyle(
+                              fontSize: 16,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22),
+                child: Center(
+                  child: SizedBox(
+                    width: 120,
+                    child: OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: HexColor("#000000"),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const HomePage()),
+                        );
+                      },
+                      child: Caption1Text("Ana sayfa", "#FFFFFF"),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -496,21 +883,113 @@ class _RoadMapPageState extends State<RoadMapPage> {
           child: Column(
             children: [
               Container(
+                height: 200,
                 decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: HexColor('#D9D9D9'),
-                    ),
-                  ),
+                  color: HexColor("#E5E5E5"),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LugatAppBar(),
+                    RegisterAppBar(),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 18.0),
+                      child: HomeSideHead(pageTitle: 'Yol haritası'),
+                    ),
                   ],
                 ),
               ),
-              Title2Text('RoadMap Page', '#000000'),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 12, left: 34),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    HeadlineText("Lügat'ın Geleceği", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Caption2Text("Lügat’ın ortaya çıkışı esnasında belirlediğimiz yol haritası, bize amacımızı hatırlatıyor ve çözüme ulaşma yolunda ne kadar ilerlediğimizi somutlaştırmamızı sağlıyor.", '#8D8D8D'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 12),
+                      child: Caption2Text("Lügat’ın Kolektif Topluluğu, bu yol haritasının ayrılmaz bir parçasıdır. Yol haritamızı inceleyerek bu sürece katkı sağlayabilirsiniz. Fikir ve düşüncelerinizi Geri Bildirim sayfasından bize ulaştırmayı unutmatın!", '#8D8D8D'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('Sonraki adım', '#BFBFBF'),
+                    ),
+                    BodyText('Geri bildirimlerin toplanması', '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('1 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("Play Store'da Lügat'ın yayınlanması", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('2 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("Web uygulaması beta yayını", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('2 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("Web uygulamasının yayınlanması", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('3 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("App Gallery yayınına hazırlık", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('3 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("App Gallery'de Lügat'ın yayınlanması", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('4 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("Geri bildirimlerin toplanması", '#000000'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Caption2Text('4 ay sonra', '#BFBFBF'),
+                    ),
+                    BodyText("Kolektif ağ araçlarının yayınlanması", '#000000'),
+                  ],
+                ),
+              ),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 32, bottom: 64),
+                        child: Center(
+                          child: SizedBox(
+                            width: 100,
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#000000"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
+                              ),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const HomePage()),
+                                );
+                              },
+                              child: Caption1Text("Ana Sayfa", "#FFFFFF"),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
@@ -607,7 +1086,10 @@ class RegisterBodyHead extends StatelessWidget {
 }
 
 class HomeSideHead extends StatelessWidget {
-  const HomeSideHead({Key? key}) : super(key: key);
+  const HomeSideHead({Key? key,
+  required this.pageTitle,
+  }) : super(key: key);
+  final String pageTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -617,7 +1099,7 @@ class HomeSideHead extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Title1Text('Geri bildirim', '#000000'),
+            Title1Text('$pageTitle', '#000000'),
             Padding(
               padding: const EdgeInsets.only(top: 14),
               child: StepProgressIndicator(totalSteps: 1, currentStep: 1, selectedColor: HexColor('#000000'), roundedEdges: Radius.circular(30),),
