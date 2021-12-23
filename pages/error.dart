@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
+import 'package:sizer/sizer.dart';
 
 String userName = '';
 String userEmail = '';
@@ -26,7 +27,7 @@ class _ErrorPageState extends State<ErrorPage> {
         child: Column(
           children: [
             Container(
-              height: 210,
+              height: 22.6.h,
               decoration: BoxDecoration(
                 color: HexColor("#E5E5E5"),
               ),
