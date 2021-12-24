@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:lugat_run/pages/category.dart';
 import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/homeside.dart';
 import 'package:lugat_run/pages/profile.dart';
@@ -133,8 +134,15 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            CategoryCard("Tasarım", "128",
-                "https://www.upload.ee/image/13731805/designCategory.png"),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const CategoryPage()),
+                );
+              },
+              child: CategoryCard("Tasarım", "128",
+                  "https://www.upload.ee/image/13731805/designCategory.png"),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 32, bottom: 2),
               child: DescriptionText("Kategoriler"),
