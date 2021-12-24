@@ -298,10 +298,17 @@ class ProfileHead extends StatelessWidget {
                   color: Colors.red,
                 ),
                 child: Center(
-                  child: Text("${userNotificationValue}",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700)),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => const NotificationPage()),
+                      );
+                    },
+                    child: Text("${userNotificationValue}",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700)),
+                  ),
                 ),
               ),
               top: 26,
@@ -706,6 +713,102 @@ class _ProfileSettingsHelpState extends State<ProfileSettingsHelp> {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class NotificationPage extends StatefulWidget {
+  const NotificationPage({Key? key}) : super(key: key);
+
+  @override
+  _NotificationPageState createState() => _NotificationPageState();
+}
+
+class _NotificationPageState extends State<NotificationPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                LugatAppBarNotification(),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            HeadlineText('Bildirimlerim', '#000000'),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8, bottom: 8),
+                      child: DescriptionText('Görüntülenmemiş bildirimler'),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: "Prototip", termDescription: "Düzenlediğiniz terim 24 yeni beğeni aldı."),
+                    Divider(color: HexColor('#F8F8F8')),
+                    TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: "Prototip", termDescription: "Eklediğiniz terimi bir moderatör onaylandı."),
+                  ],
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 24, bottom: 8),
+                      child: DescriptionText('Önceki bildirimler'),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13741255/circuitTerm.png', termName: 'Circuit', termDescription: 'Kart tasarımı için kullanılan mantıksa...')
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LugatAppBarNotification extends StatelessWidget
+    implements PreferredSizeWidget {
+  LugatAppBarNotification({Key? key}) : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(60);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      title: const Padding(
+        padding: EdgeInsets.only(left: 12),
+        child: Text(
+          "Bildirimlerim",
+          style: TextStyle(
+            color: Colors.black,
           ),
         ),
       ),

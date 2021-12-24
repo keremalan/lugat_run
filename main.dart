@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:lugat_run/pages/bookmark.dart';
 import 'package:lugat_run/pages/category.dart';
 import 'package:lugat_run/pages/error.dart';
+import 'package:lugat_run/pages/explore.dart';
 import 'package:lugat_run/pages/homeside.dart';
 import 'package:lugat_run/pages/profile.dart';
 import 'widgets/texts.dart';
@@ -29,6 +31,9 @@ class MyAppThemes {
       ),
       iconTheme: IconThemeData(
         color: Colors.indigo.shade500,
+      ),
+      dividerTheme: DividerThemeData(
+      color: Colors.white,
       ),
     );
   }
@@ -94,7 +99,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: const LugatAppBar(),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -273,6 +278,40 @@ class _HomePageState extends State<HomePage> {
                         },
                         child: Caption1Text("Kayıt Sayfası", "#FFFFFF"),
                       ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const BookmarkPage()),
+                          );
+                        },
+                        child: Caption1Text("Bookmark Sayfası", "#FFFFFF"),
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const ExplorePage()),
+                          );
+                        },
+                        child: Caption1Text("Keşfet Sayfası", "#FFFFFF"),
+                      ),
                     ],
                   ),
                 ],
@@ -299,7 +338,7 @@ class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       centerTitle: false,
       title: const Padding(
-        padding: EdgeInsets.only(left: 12),
+        padding: EdgeInsets.only(left: 10),
         child: Text(
           "Lügat",
           style: TextStyle(
@@ -309,7 +348,7 @@ class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       actions: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(right: 10),
+          padding: const EdgeInsets.only(right: 16),
           child: GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(
@@ -340,7 +379,7 @@ Widget SearchBar(placeHold) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Container(
-        width: 87.2.w,
+        width: 91.2.w,
         height: 40,
         child: CupertinoSearchTextField(
           placeholder: "$placeHold",

@@ -68,7 +68,7 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
                     Caption2Text("Tipografi", "#FFFFFF"),
                   ],
                 ),
-                FilledButton(100.0, "#FFFFFF", "#000000" , "Kelime ekle"),
+                FilledButton(100.0, "#FFFFFF", "#000000", "Kelime ekle"),
               ],
             ),
           ),
@@ -95,7 +95,7 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
 
 Widget TermCard(categoryName, termName, termAuthor, termImageUrl) {
   return Padding(
-    padding: const EdgeInsets.only(top: 22.0),
+    padding: const EdgeInsets.only(top: 0),
     child: Container(
       height: 330,
       decoration: BoxDecoration(
@@ -131,7 +131,8 @@ Widget TermCard(categoryName, termName, termAuthor, termImageUrl) {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Image.network("https://www.upload.ee/image/13740444/threedot__1_.png"),
+                            Image.network(
+                                "https://www.upload.ee/image/13740444/threedot__1_.png"),
                           ],
                         ),
                       ),
@@ -210,5 +211,74 @@ Widget CategoryTermCard(termImageUrl, termName, termAuthorName) {
         ],
       ),
     ),
+  );
+}
+
+Widget ExploreCategoryCard(categoryName, categoryImageUrl) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 22.0),
+    child: Container(
+      height: 144,
+      width: 144,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.grey),
+        borderRadius: BorderRadius.circular(6),
+        image: DecorationImage(
+          image: NetworkImage("${categoryImageUrl}"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8, left: 8),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeadlineText("${categoryName}", "#FFFFFF"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget ExploreTermCard(termName, termAuthor, termImageUrl) {
+  return Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(top: 22.0),
+        child: Container(
+          height: 120,
+          width: 120,
+          decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey),
+            borderRadius: BorderRadius.circular(6),
+            image: DecorationImage(
+              image: NetworkImage("${termImageUrl}"),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
+      Padding(
+        padding: const EdgeInsets.only(top: 4),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            FootnoteText('$termName', '#000000'),
+            Caption1Text('$termAuthor', '#808080'),
+          ],
+        ),
+      ),
+    ],
   );
 }

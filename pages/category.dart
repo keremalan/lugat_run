@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -45,43 +47,72 @@ class _CategoryPageState extends State<CategoryPage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             HeadlineText('Terimler', '#000000'),
-                            Padding(
-                              padding: const EdgeInsets.only(top: 0),
-                              child: Container(
-                                height: 30,
-                                width: 40,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30),
-                                  border: Border.all(
-                                    width: 1,
-                                    color: HexColor('#F2F2F2'),
+                            PopupMenuButton<int>(
+                              elevation: 0,
+                              color: HexColor('#000000').withOpacity(0.6),
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(6)),
+                              ),
+                              itemBuilder: (context) => [
+                                PopupMenuItem<int>(
+                                  height: 36,
+                                  value: 0,
+                                  child: Row(
+                                    children: [
+                                      Text("En popüler",
+                                          style: TextStyle(
+                                              color: HexColor('#FFFFFF'))),
+                                    ],
                                   ),
                                 ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Image.network("https://www.upload.ee/thumb/13739155/threedot.png"),
-                                  ],
-                                ),
-                              ),
+                                PopupMenuDivider(height: 4),
+                                PopupMenuItem<int>(
+                                  height: 36,
+                                  value: 1,
+                                    child: Text("En yeni",
+                                        style: TextStyle(
+                                            color: HexColor('#FFFFFF')))),
+                              ],
                             ),
                           ],
                         ),
                       ),
                       GestureDetector(
                         onTap: () {
-                          Navigator.push(context, MaterialPageRoute(
-                              builder: (context) => const TermPage()),
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const TermPage()),
                           );
                         },
-                          child: TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
+                        child: TermOverviewCard(
+                            termImageUrl:
+                                "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                            termName: 'Prototip',
+                            termDescription:
+                                'Ürün geliştirme sürecinde, ürünün kı...'),
                       ),
                       Divider(),
-                      TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
+                      TermOverviewCard(
+                          termImageUrl:
+                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                          termName: 'Prototip',
+                          termDescription:
+                              'Ürün geliştirme sürecinde, ürünün kı...'),
                       Divider(),
-                      TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
+                      TermOverviewCard(
+                          termImageUrl:
+                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                          termName: 'Prototip',
+                          termDescription:
+                              'Ürün geliştirme sürecinde, ürünün kı...'),
                       Divider(),
-                      TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
+                      TermOverviewCard(
+                          termImageUrl:
+                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                          termName: 'Prototip',
+                          termDescription:
+                              'Ürün geliştirme sürecinde, ürünün kı...'),
                     ],
                   ),
                 ),
@@ -92,6 +123,16 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
     );
   }
+
+  Widget buildBlur({
+    required Widget child,
+    double sigmaX = 10,
+    double sigmaY = 10,
+  }) =>
+      BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: sigmaX, sigmaY: sigmaY),
+        child: child,
+      );
 }
 
 class LugatAppBarCategory extends StatelessWidget
