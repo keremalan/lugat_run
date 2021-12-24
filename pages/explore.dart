@@ -133,9 +133,6 @@ class LugatAppBarExplore extends StatelessWidget
           ),
         ),
       ),
-      actions: [
-        Icon(Icons.menu),
-      ],
     );
   }
 }

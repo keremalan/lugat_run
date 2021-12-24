@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:lugat_run/pages/category.dart';
 import 'texts.dart';
 import 'buttons.dart';
 
@@ -68,7 +69,6 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
                     Caption2Text("Tipografi", "#FFFFFF"),
                   ],
                 ),
-                FilledButton(100.0, "#FFFFFF", "#000000", "Kelime ekle"),
               ],
             ),
           ),
@@ -133,6 +133,75 @@ Widget TermCard(categoryName, termName, termAuthor, termImageUrl) {
                           children: [
                             Image.network(
                                 "https://www.upload.ee/image/13740444/threedot__1_.png"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 16, bottom: 16, left: 16),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeadlineText("${termName}", "#FFFFFF"),
+                    Caption2Text(
+                        "${termAuthor} tarafından oluşturuldu", "#FFFFFF"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget AddTermCard(categoryName, termName, termAuthor, termImageUrl) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 0),
+    child: Container(
+      height: 330,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(0),
+        image: DecorationImage(
+          image: NetworkImage("${termImageUrl}"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0),
+                      child: Container(
+                        height: 30,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                            width: 1,
+                            color: HexColor('#F2F2F2'),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text("Resim ekle", style: TextStyle(color: Colors.white),),
                           ],
                         ),
                       ),
@@ -280,5 +349,21 @@ Widget ExploreTermCard(termName, termAuthor, termImageUrl) {
         ),
       ),
     ],
+  );
+}
+
+Widget FilledButton2(buttonWidth, fillColor, captionTextColor, buttonText) {
+  return SizedBox(
+    width: buttonWidth,
+    child: OutlinedButton(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: HexColor("$fillColor"),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
+        ),
+      ),
+      onPressed: () {},
+      child: Caption1Text("$buttonText", "$captionTextColor"),
+    ),
   );
 }

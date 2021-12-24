@@ -123,16 +123,175 @@ class _CategoryPageState extends State<CategoryPage> {
       ),
     );
   }
+}
 
-  Widget buildBlur({
-    required Widget child,
-    double sigmaX = 10,
-    double sigmaY = 10,
-  }) =>
-      BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: sigmaX, sigmaY: sigmaY),
-        child: child,
-      );
+class AddTermPage extends StatefulWidget {
+  const AddTermPage({Key? key}) : super(key: key);
+
+  @override
+  _AddTermPageState createState() => _AddTermPageState();
+}
+
+class _AddTermPageState extends State<AddTermPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LugatAppBarAddTerm(),
+              Container(
+                child: Column(
+                  children: [
+                    AddTermCard('Tasarım', 'Terim adı', 'Kerem Alan', 'https://www.upload.ee/image/13741477/Rectangle_39.png'),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 16, left: 16),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 22),
+                      child: Row(
+                        children: [
+                          Title2Text('Terim adı', '#000000'),
+                        ],
+                      ),
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 6),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(bottom: 4),
+                                    child: BodyText('Akla gelen ilk anlamı', '#000000'),
+                                  ),
+                                  BodyText('Bilgi eklemek için dokunun', '#999999'),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 22, bottom: 4),
+                                    child: BodyText('Örnek', '#000000'),
+                                  ),
+                                  BodyText('Bilgi eklemek için dokunun', '#999999'),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 22, bottom: 4),
+                                    child: BodyText('Ek açıklamalar', '#000000'),
+                                  ),
+                                  BodyText('Bilgi eklemek için dokunun', '#999999'),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 37),
+                      child: OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#007AFF"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const AddTermSuccessPage()),
+                          );
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: BodyText("Tamamla", "#FFFFFF"),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AddTermSuccessPage extends StatefulWidget {
+  const AddTermSuccessPage({Key? key}) : super(key: key);
+
+  @override
+  _AddTermSuccessPageState createState() => _AddTermSuccessPageState();
+}
+
+class _AddTermSuccessPageState extends State<AddTermSuccessPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LugatAppBarAddTerm(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 34),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 36, bottom: 4),
+                      child: Title2Text('Teriminiz başarıyla oluşturuldu.', '#000000'),
+                    ),
+                    Caption2Text("Aşağıdaki butona tıklayarak kategoriye dönebilirsiniz.", '#909090'),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 32),
+                      child: Center(
+                        child: SizedBox(
+                          width: 200,
+                          height: 40,
+                          child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: HexColor("#000000"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const CategoryPage()),
+                              );
+                            },
+                            child: BodyText("Tasarım Kategorisi", "#FFFFFF"),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class LugatAppBarCategory extends StatelessWidget
@@ -158,9 +317,39 @@ class LugatAppBarCategory extends StatelessWidget
       actions: [
         Padding(
           padding: const EdgeInsets.only(right: 16),
-          child: Icon(Icons.search),
+          child: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const AddTermPage()),
+                );
+              },
+              child: Icon(Icons.add)),
         ),
       ],
+    );
+  }
+}
+
+class LugatAppBarAddTerm extends StatelessWidget
+    implements PreferredSizeWidget {
+  LugatAppBarAddTerm({Key? key}) : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(60);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      title: const Padding(
+        padding: EdgeInsets.only(left: 12),
+        child: Text(
+          "Terim ekle",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
     );
   }
 }
