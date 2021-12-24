@@ -3,6 +3,8 @@ import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
+import 'package:lugat_run/pages/error.dart';
+import 'package:lugat_run/pages/homeside.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
@@ -29,7 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
               LugatAppBarProfile(),
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
                       Padding(
@@ -42,7 +44,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               Container(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 34),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
                       Padding(
@@ -332,7 +334,375 @@ class _ProfileSettingsState extends State<ProfileSettings> {
               LugatAppBarProfileSettings(),
               Container(
                 child: Column(
-                  children: [],
+                  children: [
+                    Column(
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => const ProfileSettingsPersonal()),
+                            );
+                          },
+                            child: HomeSideItem(itemTitle: 'Kişisel bilgiler', itemDesc: 'Kullanıcı adınız, profil özetiniz'),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => const ProfileSettingsSecurity()),
+                            );
+                          },
+                            child: HomeSideItem(itemTitle: 'Güvenlik', itemDesc: 'Şifreniz ve şifre kurtarma araçlarınız'),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => const ProfileSettingsBlockContent()),
+                            );
+                          },
+                            child: HomeSideItem(itemTitle: 'Engelli içerikler', itemDesc: 'Görmek istemediğinizi belirttiğiniz terimler ve kanallar'),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(context, MaterialPageRoute(
+                                builder: (context) => const ProfileSettingsHelp()),
+                            );
+                          },
+                            child: HomeSideItem(itemTitle: 'Yardım', itemDesc: 'Sıkça sorulan sorulara ve iletişim kanallarına göz atın'),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 84),
+                      child: Column(
+                        children: [
+                          HomeSideItem(itemTitle: 'Çıkış yap', itemDesc: ''),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileSettingsPersonal extends StatefulWidget {
+  const ProfileSettingsPersonal({Key? key}) : super(key: key);
+
+  @override
+  _ProfileSettingsPersonalState createState() => _ProfileSettingsPersonalState();
+}
+
+class _ProfileSettingsPersonalState extends State<ProfileSettingsPersonal> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LugatAppBarProfileSettings(),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: HeadlineText('Kişisel bilgiler', '#000000'),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'Profil Fotoğrafı', itemDescription: 'Düzenlemek için dokunun',),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'İsim', itemDescription: 'Kerem Alan',),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'İlgi alanı / İş', itemDescription: 'Arayüz Tasarımı',),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'Kurum', itemDescription: 'Geight',),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileSettingsPersonalItem extends StatelessWidget {
+  ProfileSettingsPersonalItem({
+    required this.itemText,
+    required this.itemDescription,
+    Key? key,
+  }) : super(key: key);
+  String itemText;
+  String itemDescription;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            BodyText('$itemText', '#000000'),
+            Caption1Text('$itemDescription', '#9D9D9D'),
+          ],
+        ),
+        Icon(
+            Icons.edit,
+          color: HexColor('#007AFF'),
+        ),
+      ],
+    );
+  }
+}
+
+final userEmail = 'kerem.alan@outlook.com';
+final userPhone = '+90(534) 743 77-51';
+
+class ProfileSettingsSecurity extends StatefulWidget {
+  const ProfileSettingsSecurity({Key? key}) : super(key: key);
+
+  @override
+  _ProfileSettingsSecurityState createState() => _ProfileSettingsSecurityState();
+}
+
+class _ProfileSettingsSecurityState extends State<ProfileSettingsSecurity> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LugatAppBarProfileSettings(),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: HeadlineText('Güvenlik', '#000000'),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'E-Posta adresi', itemDescription: '$userEmail',),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'Telefon', itemDescription: '$userPhone',),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8),
+                              child: ProfileSettingsPersonalItem(itemText: 'Şifre', itemDescription: '********',),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileSettingsBlockContent extends StatefulWidget {
+  const ProfileSettingsBlockContent({Key? key}) : super(key: key);
+
+  @override
+  _ProfileSettingsBlockContentState createState() => _ProfileSettingsBlockContentState();
+}
+
+class _ProfileSettingsBlockContentState extends State<ProfileSettingsBlockContent> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LugatAppBarProfileSettings(),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: HeadlineText('Engelli içerikler', '#000000'),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 12),
+                          child: Column(
+                            children: [
+                              TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13740314/blockPrototype.png", termName: 'Gizlenen terim adı', termDescription: 'Gizlenen terim açıklaması'),
+                              Divider(),
+                              TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13740314/blockPrototype.png", termName: 'Gizlenen terim adı', termDescription: 'Gizlenen terim açıklaması'),
+                              Divider(),
+                              TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13740314/blockPrototype.png", termName: 'Gizlenen terim adı', termDescription: 'Gizlenen terim açıklaması'),
+                              Divider(),
+                              TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13740314/blockPrototype.png", termName: 'Gizlenen terim adı', termDescription: 'Gizlenen terim açıklaması'),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ProfileSettingsHelp extends StatefulWidget {
+  const ProfileSettingsHelp({Key? key}) : super(key: key);
+
+  @override
+  _ProfileSettingsHelpState createState() => _ProfileSettingsHelpState();
+}
+
+class _ProfileSettingsHelpState extends State<ProfileSettingsHelp> {
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: Container(
+        decoration: BoxDecoration(
+          color: HexColor('#FFFFFF'),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              LugatAppBarProfileSettings(),
+              Container(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            child: HeadlineText('Yardım', '#000000'),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BodyText('Sıkça Sorulan Sorular', '#4D4D4D'),
+                              Caption2Text('Sık sorulan sorulara erişmek için dokunun', '#9F9F9F'),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 24, bottom: 12),
+                            child: HeadlineText('İletişim', '#000000'),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              BodyText('E-Posta', '#4D4D4D'),
+                              Caption2Text("iletisim@lugat.io", "#9F9F9F"),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BodyText('Telefon', '#4D4D4D'),
+                                Caption2Text("+90 (534) 743 77-51", "#9F9F9F"),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                BodyText('Adres', '#4D4D4D'),
+                                Caption2Text("Şişli Kolektif House, Nu: 17, Şişli/İstanbul", "#9F9F9F"),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -356,7 +726,7 @@ Widget DescriptionText(descText) {
 
 class LugatAppBarProfile extends StatelessWidget
     implements PreferredSizeWidget {
-  LugatAppBarProfile({Key? key}) : super(key: key);
+  LugatAppBarProfile({Key? key,}) : super(key: key);
 
   @override
   Size get preferredSize => const Size.fromHeight(60);
