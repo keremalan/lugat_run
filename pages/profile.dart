@@ -62,7 +62,52 @@ class _ProfilePageState extends State<ProfilePage> {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
-                            ProfileOverviewCard(overviewCategoryColor: '#007AFF', overviewCategoryName: 'Tasarım', overviewCategoryValue: '29',),
+                            TextButton(child: ProfileOverviewCard(overviewCategoryColor: '#007AFF', overviewCategoryName: 'Tasarım', overviewCategoryValue: '29',),
+                              onPressed: () {
+                              showModalBottomSheet(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,context: context, builder: (BuildContext context){
+                                return SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 36, top: 22),
+                                        child: Row(
+                                          children: [
+                                            BodyText("Tasarım kategorisine katkılarım", '#000000'),
+                                          ],
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.only(left: 26, top: 16),
+                                        child: Column(
+                                          children: [
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Divider(),
+                                            TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png', termName: 'Prototip', termDescription: 'Ürün geliştirme süreçlerinde kısa süred...'),
+                                            Padding(
+                                              padding: const EdgeInsets.only(bottom: 30),
+                                              child: Divider(),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              });
+                              },
+                            ),
                             ProfileOverviewCard(overviewCategoryColor: '#34C85A', overviewCategoryName: 'Yazılım', overviewCategoryValue: '17',),
                             ProfileOverviewCard(overviewCategoryColor: '#FFCC00', overviewCategoryName: 'Metaverse', overviewCategoryValue: '4',),
                           ],
