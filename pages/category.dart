@@ -4,6 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
 import 'package:lugat_run/pages/profile.dart';
+import 'package:lugat_run/pages/term.dart';
 import '../widgets/cards.dart';
 import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/homeside.dart';
@@ -67,7 +68,14 @@ class _CategoryPageState extends State<CategoryPage> {
                           ],
                         ),
                       ),
-                      TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(context, MaterialPageRoute(
+                              builder: (context) => const TermPage()),
+                          );
+                        },
+                          child: TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
+                      ),
                       Divider(),
                       TermOverviewCard(termImageUrl: "https://www.upload.ee/image/13731924/prototypeTerm.png", termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürünün kı...'),
                       Divider(),

@@ -93,6 +93,75 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
   );
 }
 
+Widget TermCard(categoryName, termName, termAuthor, termImageUrl) {
+  return Padding(
+    padding: const EdgeInsets.only(top: 22.0),
+    child: Container(
+      height: 330,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(0),
+        image: DecorationImage(
+          image: NetworkImage("${termImageUrl}"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 0),
+                      child: Container(
+                        height: 22,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          border: Border.all(
+                            width: 1,
+                            color: HexColor('#F2F2F2'),
+                          ),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.network("https://www.upload.ee/image/13740444/threedot__1_.png"),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(right: 16, bottom: 16, left: 16),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    HeadlineText("${termName}", "#FFFFFF"),
+                    Caption2Text(
+                        "${termAuthor} tarafından oluşturuldu", "#FFFFFF"),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 Widget CategoryTitle(categoryName) {
   return Container(
     child: Row(
