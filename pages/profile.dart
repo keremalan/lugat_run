@@ -28,7 +28,6 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              LugatAppBarProfile(),
               Container(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),

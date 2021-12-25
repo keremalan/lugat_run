@@ -16,44 +16,6 @@ import 'package:sizer/sizer.dart';
 
 void main() => runApp(const Lugat_Run());
 
-// Themes
-
-class MyAppThemes {
-  static ThemeData appThemeLight() {
-    return ThemeData(
-      scaffoldBackgroundColor: HexColor('#FFFFFF'),
-      brightness: Brightness.light,
-      appBarTheme: const AppBarTheme(
-        color: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-      ),
-      iconTheme: IconThemeData(
-        color: Colors.indigo.shade500,
-      ),
-      dividerTheme: DividerThemeData(
-      color: Colors.white,
-      ),
-    );
-  }
-
-  static ThemeData appThemeDark() {
-    return ThemeData(
-      brightness: Brightness.dark,
-      appBarTheme: const AppBarTheme(
-        color: Colors.black,
-        iconTheme: IconThemeData(
-          color: Colors.white,
-        ),
-      ),
-      iconTheme: IconThemeData(
-        color: Colors.indigo.shade500,
-      ),
-    );
-  }
-}
-
 // Home Page
 
 // ignore: camel_case_types
@@ -78,11 +40,71 @@ class _Lugat_RunState extends State<Lugat_Run> {
           '/error': (context) => const ErrorPage(),
         },
         theme: MyAppThemes.appThemeLight(),
-        home: const HomePage(),
+        home: const Home(),
       );
     },);
   }
 }
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;
+  static const List<Widget> _widgetOptions = <Widget>[
+    HomePage(
+    ),
+    ExplorePage(
+    ),
+    BookmarkPage(
+    ),
+    ProfilePage(
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: LugatAppBar(),
+      body: _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Ana sayfa',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.explore),
+            label: 'Keşfet',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.bookmark),
+            label: 'Kaydettiklerim',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Profil',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: HexColor('#000000'),
+        onTap: _onItemTapped,
+      ),
+    );
+  }
+}
+
+
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -97,13 +119,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const LugatAppBar(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SearchBar("Aramak istediğiniz terimi girin"),
+            SearchBar('Aramak istediğiniz terimi girin'),
             Padding(
               padding: const EdgeInsets.only(top: 32, bottom: 8),
               child: DescriptionText("Öne çıkan kategoriler"),
@@ -393,4 +414,42 @@ Widget SearchBar(placeHold) {
       ),
     ],
   );
+}
+
+// Themes
+
+class MyAppThemes {
+  static ThemeData appThemeLight() {
+    return ThemeData(
+      scaffoldBackgroundColor: HexColor('#FFFFFF'),
+      brightness: Brightness.light,
+      appBarTheme: const AppBarTheme(
+        color: Colors.white,
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.indigo.shade500,
+      ),
+      dividerTheme: DividerThemeData(
+        color: Colors.white,
+      ),
+    );
+  }
+
+  static ThemeData appThemeDark() {
+    return ThemeData(
+      brightness: Brightness.dark,
+      appBarTheme: const AppBarTheme(
+        color: Colors.black,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+      ),
+      iconTheme: IconThemeData(
+        color: Colors.indigo.shade500,
+      ),
+    );
+  }
 }

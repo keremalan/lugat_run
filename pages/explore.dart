@@ -31,18 +31,14 @@ class _ExplorePageState extends State<ExplorePage> {
         ),
         child: SingleChildScrollView(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
             child: Column(
               children: [
-                LugatAppBarExplore(),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8),
-                  child: SearchBar('Aradığınız terimi girin'),
-                ),
+                SearchBar('Aramak istediğiniz terimi girin'),
                 Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 18.0),
+                      padding: const EdgeInsets.only(top: 32.0),
                       child: DescriptionText('Kategoriler'),
                     ),
                   ],
@@ -74,35 +70,89 @@ class _ExplorePageState extends State<ExplorePage> {
                     ),
                   ],
                 ),
-                Wrap(
-                  runSpacing: 0,
-                  spacing: 16,
-                  children: <Widget>[
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                    ExploreTermCard('Variables', 'Duygu Gençdoğan',
-                        'https://www.upload.ee/image/13741353/variablesTerm.png'),
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                              'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                              'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 10),
+                            child: ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                                'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                          ),
+                          ExploreTermCard('Variables', 'Duygu Gençdoğan',
+                              'https://www.upload.ee/image/13741353/variablesTerm.png'),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -153,11 +203,9 @@ Widget SearchBar(placeHold) {
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       Container(
-        width: 90.2.w,
+        width: 91.2.w,
         height: 40,
         child: CupertinoSearchTextField(
-          padding: EdgeInsets.only(left: 6),
-          borderRadius: BorderRadius.circular(16),
           placeholder: "$placeHold",
           onChanged: (String value) {
             print('The text has changed to: $value');
