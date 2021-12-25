@@ -56,7 +56,7 @@ class _HomeSideState extends State<HomeSide> {
                 },
                 child: const HomeSideItem(
                     itemTitle: "Geri bildirim",
-                    itemDesc: 'Yaşadığınız deneyimi zengileştirebilmemiz için bize ulaşın.',
+                    itemDesc: 'Yaşadığınız deneyimi bize ulaştırın.',
                 ),
               ),
               GestureDetector(
@@ -67,7 +67,7 @@ class _HomeSideState extends State<HomeSide> {
                 },
                 child: const HomeSideItem(
                     itemTitle: 'Yardım',
-                    itemDesc: 'Sıkça sorular sorulara ve iletişim kanallarına göz atın.',
+                    itemDesc: 'Sıkça sorular sorulara ve iletişim kanalları.',
                 ),
               ),
               GestureDetector(

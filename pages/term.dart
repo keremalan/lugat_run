@@ -63,7 +63,7 @@ class _TermPageState extends State<TermPage> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 6),
+                              padding: const EdgeInsets.symmetric(horizontal: 0),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
@@ -86,7 +86,7 @@ class _TermPageState extends State<TermPage> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 10),
+                              padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 0),
                               child: Column(
                                 children: [
                                   Row(
