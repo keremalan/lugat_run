@@ -44,7 +44,7 @@ class _HomeSideState extends State<HomeSide> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    LugatAppBar(),
+                    LugatAppBarHomeside(),
                   ],
                 ),
               ),
@@ -1149,6 +1149,33 @@ class RegisterHead extends StatelessWidget {
           child: SubheadText("$subheadText", "#000000"),
         ),
       ],
+    );
+  }
+}
+
+// App Bar
+
+
+class LugatAppBarHomeside extends StatelessWidget implements PreferredSizeWidget {
+  const LugatAppBarHomeside ({Key? key}) : super(key: key);
+
+  @override
+  Size get preferredSize => const Size.fromHeight(60);
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      elevation: 0,
+      centerTitle: false,
+      title: const Padding(
+        padding: EdgeInsets.only(left: 10),
+        child: Text(
+          "Lügat",
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+      ),
     );
   }
 }

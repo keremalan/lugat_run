@@ -97,7 +97,8 @@ class _HomeState extends State<Home> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: HexColor('#000000'),
+        selectedItemColor: HexColor('#307BF6'),
+        unselectedItemColor: HexColor('#B3B3B3'),
         onTap: _onItemTapped,
       ),
     );
