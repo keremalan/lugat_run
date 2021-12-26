@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import '../widgets/divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -42,7 +42,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       CategoryCard("Tasarım", "128",
                           "https://www.upload.ee/image/13731805/designCategory.png"),
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        padding: const EdgeInsets.only(top: 12),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -77,46 +77,49 @@ class _CategoryPageState extends State<CategoryPage> {
                           ],
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const TermPage()),
-                          );
-                        },
-                        child: TermOverviewCard(
-                            termImageUrl:
+                      Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const TermPage()),
+                              );
+                            },
+                            child: TermOverviewCard(
+                                termImageUrl:
                                 "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                            termName: 'Prototip',
-                            termDescription:
+                                termName: 'Prototip',
+                                termDescription:
                                 'Ürün geliştirme sürecinde, ürünün kı...'),
+                          ),
+                          TermOverviewCard(
+                              termImageUrl:
+                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                              termName: 'Prototip',
+                              termDescription:
+                              'Ürün geliştirme sürecinde, ürünün kı...'),
+                          TermOverviewCard(
+                              termImageUrl:
+                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                              termName: 'Prototip',
+                              termDescription:
+                              'Ürün geliştirme sürecinde, ürünün kı...'),
+                          TermOverviewCard(
+                              termImageUrl:
+                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                              termName: 'Prototip',
+                              termDescription:
+                              'Ürün geliştirme sürecinde, ürünün kı...'),
+                        ].joinWidgetList(
+                              (index) => Divider(),
                       ),
-                      Divider(),
-                      TermOverviewCard(
-                          termImageUrl:
-                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                          termName: 'Prototip',
-                          termDescription:
-                              'Ürün geliştirme sürecinde, ürünün kı...'),
-                      Divider(),
-                      TermOverviewCard(
-                          termImageUrl:
-                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                          termName: 'Prototip',
-                          termDescription:
-                              'Ürün geliştirme sürecinde, ürünün kı...'),
-                      Divider(),
-                      TermOverviewCard(
-                          termImageUrl:
-                              "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                          termName: 'Prototip',
-                          termDescription:
-                              'Ürün geliştirme sürecinde, ürünün kı...'),
+                      ),
                     ],
+                    ),
                   ),
                 ),
-              ),
             ],
           ),
         ),

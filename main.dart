@@ -179,22 +179,6 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  CategoryTermCard(
-                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                      "Prototip",
-                      "Kerem Alan"),
-                  CategoryTermCard(
-                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                      "Frototip",
-                      "Gökhan Falan"),
-                  CategoryTermCard(
-                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                      "Brototip",
-                      "Türkmen Köyhan"),
-                  CategoryTermCard(
-                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                      "Krototip",
-                      "Uğur Taylan"),
                 ],
               ),
             ),
@@ -345,7 +329,6 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
 // App Bar
 
 class LugatAppBar extends StatelessWidget implements PreferredSizeWidget {
