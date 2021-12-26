@@ -179,6 +179,22 @@ class _HomePageState extends State<HomePage> {
               scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Prototip",
+                      "Kerem Alan"),
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Frototip",
+                      "Gökhan Falan"),
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Brototip",
+                      "Türkmen Köyhan"),
+                  CategoryTermCard(
+                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
+                      "Krototip",
+                      "Uğur Taylan"),
                 ],
               ),
             ),
