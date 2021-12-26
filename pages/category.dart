@@ -278,26 +278,28 @@ class _AddTermPageState extends State<AddTermPage> {
                             });
                           },
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 37),
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              backgroundColor: HexColor("#007AFF"),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(30),
+                        Center(
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 37),
+                            child: OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                backgroundColor: HexColor("#007AFF"),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                ),
                               ),
-                            ),
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                    const HomePage()),
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: BodyText("Tamamla", "#FFFFFF"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const HomePage()),
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: BodyText("Tamamla", "#FFFFFF"),
+                              ),
                             ),
                           ),
                         ),

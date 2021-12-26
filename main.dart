@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:lugat_run/pages/album.dart';
 import 'package:lugat_run/pages/bookmark.dart';
 import 'package:lugat_run/pages/category.dart';
 import 'package:lugat_run/pages/error.dart';
@@ -333,6 +334,23 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         child: Caption1Text("Keşfet Sayfası", "#FFFFFF"),
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const AlbumPage()),
+                          );
+                        },
+                        child: Caption1Text("Galeri Sayfası", "#FFFFFF"),
                       ),
                     ],
                   ),
