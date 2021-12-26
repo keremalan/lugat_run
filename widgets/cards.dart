@@ -186,24 +186,21 @@ Widget AddTermCard(categoryName, termName, termAuthor, termImageUrl) {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 0),
-                      child: Container(
-                        height: 30,
-                        width: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                            width: 1,
-                            color: HexColor('#F2F2F2'),
-                          ),
+                    Container(
+                      height: 30,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
+                          width: 1,
+                          color: HexColor('#F2F2F2'),
                         ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Resim ekle", style: TextStyle(color: Colors.white),),
-                          ],
-                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text("Resim ekle", style: TextStyle(color: Colors.white),),
+                        ],
                       ),
                     ),
                   ],
