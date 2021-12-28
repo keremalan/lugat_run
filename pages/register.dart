@@ -25,233 +25,272 @@ class _RegisterPageState extends State<RegisterPage> {
   void didUpdateWidget(RegisterPage oldWidget) {
     super.didUpdateWidget(oldWidget);
   }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 25.6.h,
-              decoration: BoxDecoration(
-                color: HexColor("#E5E5E5"),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(
+                height: 25.6.h,
+                decoration: BoxDecoration(
+                  color: HexColor("#E5E5E5"),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RegisterAppBar(),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 34),
+                      child: RegisterHead(
+                          titleText: 'Hesap oluştur',
+                          subheadText: 'Bilgilerinizi girin.'),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          top: 12, right: 34, bottom: 12, left: 34),
+                      child: StepProgressIndicator(
+                        totalSteps: 3,
+                        currentStep: 1,
+                        selectedColor: HexColor("#000000"),
+                        roundedEdges: Radius.circular(6),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RegisterAppBar(),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 34),
-                    child: RegisterHead(
-                        titleText: 'Hesap oluştur',
-                        subheadText: 'Bilgilerinizi girin.'),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                        top: 12, right: 34, bottom: 12, left: 34),
-                    child: StepProgressIndicator(
-                      totalSteps: 3,
-                      currentStep: 1,
-                      selectedColor: HexColor("#000000"),
-                      roundedEdges: Radius.circular(6),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 22, right: 34, bottom: 22, left: 34),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const RegisterBodyHead(
+                      headlineText: 'Kişisel bilgileriniz',
+                      captionText:
+                          'Hesabınızı oluşturabilmemiz için bilgilerinizi girin',
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 22, right: 34, bottom: 22, left: 34),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const RegisterBodyHead(
-                    headlineText: 'Kişisel bilgileriniz',
-                    captionText:
-                        'Hesabınızı oluşturabilmemiz için bilgilerinizi girin',
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      maxLines: 1,
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'İsminiz',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'İsminizi boş bırakmamalısınız';
+                          } return null;
+                        },
+                        maxLines: 1,
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'İsminiz',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
                           ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userName = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'E-Postanız',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userEmail = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'Telefon numaranız',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userPhone = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'Şifreniz',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userPassword = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'Şifrenizi onaylayın',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userPasswordCheck = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12),
-                    child: Center(
-                      child: SizedBox(
-                        width: 120,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: HexColor("#000000"),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userName = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'E-Postanız boş bırakılmamalı';
+                          }
+                          return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'E-Postanız',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userEmail = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Telefon numaranız boş bırakılmamalı';
+                          }
+                          return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'Telefon numaranız',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userPhone = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Şifre alanı boş bırakılmamalı';
+                          }
+                          return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'Şifreniz',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userPassword = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty || userPassword != userPasswordCheck) {
+                            return 'Şifre ile şifre onayı eşleşmedi!';
+                          }
+                          return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'Şifrenizi onaylayın',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userPasswordCheck = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: Center(
+                        child: SizedBox(
+                          width: 120,
+                          child: ElevatedButton(
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: HexColor("#000000"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Form işlenior')),
+                                );
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
                                       const RegisterPageStep2()),
-                            );
-                          },
-                          child: Caption1Text("Devam", "#FFFFFF"),
+                                );
+                              }
+
+                            },
+                            child: Caption1Text("Devam", "#FFFFFF"),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -429,114 +468,129 @@ class RegisterPageStep3 extends StatefulWidget {
 }
 
 class _RegisterPageStep3State extends State<RegisterPageStep3> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 25.6.h,
-              decoration: BoxDecoration(
-                color: HexColor("#E5E5E5"),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RegisterAppBar(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 34),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const RegisterHead(
-                          titleText: 'Hesap oluştur',
-                          subheadText: 'Onay kodunuzu girin.',
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12, bottom: 12),
-                          child: StepProgressIndicator(
-                            totalSteps: 3,
-                            currentStep: 3,
-                            selectedColor: HexColor("#000000"),
-                            roundedEdges: Radius.circular(6),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(
+                height: 25.6.h,
+                decoration: BoxDecoration(
+                  color: HexColor("#E5E5E5"),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RegisterAppBar(),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 34),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const RegisterHead(
+                            titleText: 'Hesap oluştur',
+                            subheadText: 'Onay kodunuzu girin.',
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 22, right: 34, bottom: 22, left: 34),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const RegisterBodyHead(
-                    headlineText: 'Kaydınızı tamamlayın',
-                    captionText:
-                        'Kodunuzu girdiğinizde tamamla butonu aktif hale gelir. Kaydınızı tamamladığınızda kullanıcı sözleşmesini okudunuz kabul edilir ve hesabınız oluşturulur.',
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'Onay kodunuzu girin',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userPasswordCheck = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 22),
-                    child: Center(
-                      child: SizedBox(
-                        width: 120,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: HexColor("#000000"),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12, bottom: 12),
+                            child: StepProgressIndicator(
+                              totalSteps: 3,
+                              currentStep: 3,
+                              selectedColor: HexColor("#000000"),
+                              roundedEdges: Radius.circular(6),
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const RegisterPageStep4()),
-                            );
-                          },
-                          child: Caption1Text("Tamamla", "#FFFFFF"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 22, right: 34, bottom: 22, left: 34),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const RegisterBodyHead(
+                      headlineText: 'Kaydınızı tamamlayın',
+                      captionText:
+                          'Kodunuzu girdiğinizde tamamla butonu aktif hale gelir. Kaydınızı tamamladığınızda kullanıcı sözleşmesini okudunuz kabul edilir ve hesabınız oluşturulur.',
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Onay kodu boş bırakılmamalıdır';
+                          }
+                          return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'Onay kodunuzu girin',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userPasswordCheck = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 22),
+                      child: Center(
+                        child: SizedBox(
+                          width: 120,
+                          child: ElevatedButton(
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: HexColor("#000000"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                               ScaffoldMessenger.of(context).showSnackBar(
+                                 const SnackBar(content: Text('bişiler')),
+                               );
+                               Navigator.push(
+                                 context,
+                                 MaterialPageRoute(
+                                     builder: (context) =>
+                                     const RegisterPageStep4()),
+                               );
+                              }
+                            },
+                            child: Caption1Text("Tamamla", "#FFFFFF"),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
