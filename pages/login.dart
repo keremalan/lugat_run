@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
+import 'package:lugat_run/pages/homeside.dart';
 import 'package:lugat_run/pages/register.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
@@ -21,141 +22,184 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 25.6.h,
-              decoration: BoxDecoration(
-                color: HexColor("#E5E5E5"),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(
+                height: 25.6.h,
+                decoration: BoxDecoration(
+                  color: HexColor("#E5E5E5"),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RegisterAppBar(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 34),
+                      child: RegisterHead(titleText: 'Giriş Yap', subheadText: 'Bilgilerinizle hesabınıza giriş yapın'),
+                    ),
+                  ],
+                ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  RegisterAppBar(),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 34),
-                    child: RegisterHead(titleText: 'Giriş Yap', subheadText: 'Bilgilerinizle hesabınıza giriş yapın'),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 22, right: 34, bottom: 32, left: 34),
-              child: Column(
-                children: [
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: TextField(
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            labelText: 'E-Postanız',
-                            contentPadding: EdgeInsets.only(bottom: 8),
-                            labelStyle: TextStyle(
-                              color: HexColor("#999999"),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: HexColor("#D9D9D9"),
+              Padding(
+                padding: const EdgeInsets.only(top: 22, right: 34, bottom: 32, left: 34),
+                child: Column(
+                  children: [
+                    Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'E-Posta kısmı boş bırakılmamalı';
+                              } return null;
+                            },
+                            textAlignVertical: TextAlignVertical.center,
+                            decoration: InputDecoration(
+                              labelText: 'E-Postanız',
+                              contentPadding: EdgeInsets.only(bottom: 8),
+                              labelStyle: TextStyle(
+                                color: HexColor("#999999"),
                               ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: HexColor("#000000"),
-                              ),
-                            ),
-                          ),
-                          onChanged: (value) {
-                            print(value);
-                            setState(() {
-                              userEmail = value;
-                            });
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 16),
-                        child: TextField(
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            labelText: 'Şifreniz',
-                            contentPadding: EdgeInsets.only(bottom: 8),
-                            labelStyle: TextStyle(
-                              color: HexColor("#999999"),
-                            ),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: HexColor("#D9D9D9"),
-                              ),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(
-                                color: HexColor("#000000"),
-                              ),
-                            ),
-                          ),
-                          obscureText: true,
-                          enableSuggestions: false,
-                          autocorrect: false,
-                          onChanged: (value) {
-                            print(value);
-                            setState(() {
-                              userPassword = value;
-                            });
-                          },
-                        ),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: SizedBox(
-                              width: 80,
-                              child: OutlinedButton(
-                                style: OutlinedButton.styleFrom(
-                                  backgroundColor: HexColor("#FFFFFF"),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: HexColor("#D9D9D9"),
                                 ),
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => RegisterPage()),
-                                  );
-                                },
-                                child: Caption1Text("Kayıt ol", "#000000"),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: HexColor("#000000"),
+                                ),
                               ),
                             ),
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                userEmail = value;
+                              });
+                            },
                           ),
-                          FilledButton(160.0, '#000000', '#FFFFFF', 'Giriş yap'),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Şifreniz boş bırakılmamalı';
+                              } return null;
+                            },
+                            textAlignVertical: TextAlignVertical.center,
+                            decoration: InputDecoration(
+                              labelText: 'Şifreniz',
+                              contentPadding: EdgeInsets.only(bottom: 8),
+                              labelStyle: TextStyle(
+                                color: HexColor("#999999"),
+                              ),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: HexColor("#D9D9D9"),
+                                ),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: HexColor("#000000"),
+                                ),
+                              ),
+                            ),
+                            obscureText: true,
+                            enableSuggestions: false,
+                            autocorrect: false,
+                            onChanged: (value) {
+                              print(value);
+                              setState(() {
+                                userPassword = value;
+                              });
+                            },
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 10),
+                              child: SizedBox(
+                                width: 120,
+                                child: ElevatedButton(
+                                  style: OutlinedButton.styleFrom(
+                                    backgroundColor: HexColor("#FFFFFF"),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                  ),
+                                  onPressed: () {
+                                    if (_formKey.currentState!.validate()) {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(content: Text('Başarıyla giriş yaptınız')),
+                                      );
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home()),
+                                      );
+                                    }
+                                  },
+                                  child: Caption1Text("Giris yap", "#000000"),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 120,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    primary: HexColor("#000000"),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30),
+                                    ),
+                                ),
+                                  onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => RegisterPage()),
+                                );
+                              }, child: Text('Kayıt Ol')),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InkWell(onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ForgotPassword()),
+                    );
+                  }, child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Caption2Text('Şifremi unuttum', '#999999'),
+                  )),
+                  InkWell(onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HelpPage()),
+                    );
+                  }, child: Caption2Text('Yardıma ihtiyacım var', '#999999')),
                 ],
               ),
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InkWell(onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const ForgotPassword()),
-                  );
-                }, child: Caption2Text('Şifremi unuttum', '#999999')),
-                InkWell(onTap: () {}, child: Caption2Text('Yardıma ihtiyacım var', '#999999')),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
