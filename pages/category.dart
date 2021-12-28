@@ -14,6 +14,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
 import 'package:sizer/sizer.dart';
+import '../repository/term_repository.dart';
 
 String termCategory = '';
 String termTitle = '';
@@ -22,7 +23,16 @@ String termExample = '';
 String termDescription = '';
 
 List <Term> termList = [
-  Term(termCategory: '2', termTitle: '2', termMean: '2', termExample: '2', termDescription: '2', termImageUrl: '2'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
+  Term(termCategory: 'Tasarım', termTitle: 'Prototip', termMean: 'İlk anlami', termExample: 'İlk örnek', termDescription: 'Ek açıklamalar', termImageUrl: 'https://www.upload.ee/image/13711150/griditem__6_.png'),
 ];
 
 class Term extends StatefulWidget {

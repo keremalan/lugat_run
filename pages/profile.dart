@@ -3,12 +3,14 @@ import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
+import 'package:lugat_run/pages/category.dart';
 import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/homeside.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
 import 'package:sizer/sizer.dart';
+import '../repository/term_repository.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -122,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13739165/prototypeTerm.png', termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürün..',),
                           Divider(),
                           TermOverviewCard(termImageUrl: 'https://www.upload.ee/image/13739165/prototypeTerm.png', termName: 'Prototip', termDescription: 'Ürün geliştirme sürecinde, ürün..',),
-                        ],
+                        ]
                       ),
                     ],
                   ),

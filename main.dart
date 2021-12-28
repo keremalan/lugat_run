@@ -8,6 +8,7 @@ import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/explore.dart';
 import 'package:lugat_run/pages/homeside.dart';
 import 'package:lugat_run/pages/profile.dart';
+import 'package:lugat_run/pages/test.dart';
 import 'widgets/texts.dart';
 import 'widgets/cards.dart';
 import './pages/register.dart';
@@ -351,6 +352,23 @@ class _HomePageState extends State<HomePage> {
                           );
                         },
                         child: Caption1Text("Galeri Sayfası", "#FFFFFF"),
+                      ),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: HexColor("#000000"),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const TestPage()),
+                          );
+                        },
+                        child: Caption1Text("Test Sayfası", "#FFFFFF"),
                       ),
                     ],
                   ),
