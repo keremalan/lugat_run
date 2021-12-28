@@ -183,6 +183,7 @@ class AddTermPage extends StatefulWidget {
 }
 
 class _AddTermPageState extends State<AddTermPage> {
+  final _formKey = GlobalKey<FormState>();
   final controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -192,134 +193,155 @@ class _AddTermPageState extends State<AddTermPage> {
           color: HexColor('#FFFFFF'),
         ),
         child: SingleChildScrollView(
-          child: Column(
-            children: [
-              LugatAppBarAddTerm(),
-              Container(
-                child: Column(
-                  children: [
-                    AddTermCard('Tasarım', 'Terim adı', 'Kerem Alan', 'https://www.upload.ee/image/13741477/Rectangle_39.png'),
-                  ],
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                LugatAppBarAddTerm(),
+                Container(
+                  child: Column(
+                    children: [
+                      AddTermCard('Tasarım', 'Terim adı', 'Kerem Alan', 'https://www.upload.ee/image/13741477/Rectangle_39.png'),
+                    ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 22, right: 16, left: 16),
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 0),
-                      child: Column(
+                Padding(
+                  padding: const EdgeInsets.only(top: 22, right: 16, left: 16),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Title2Text('Terim adı', '#000000'),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 12),
+                              child: TextFormField(
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'Terim adı boş bırakılamaz';
+                                  } return null;
+                                },
+                                keyboardType: TextInputType.multiline,
+                                maxLines: null,
+                                style: TextStyle(
+                                  color: HexColor('#999999'),
+                                ),
+                                decoration: const InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: "Bilgi eklemek için buraya dokun",
+                                ),
+                                onSaved: (newValue) {
+                                  print('Terim adı: $newValue');
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Title2Text('Terim adı', '#000000'),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 12),
-                            child: TextField(
-                              keyboardType: TextInputType.multiline,
-                              maxLines: null,
-                              style: TextStyle(
-                                color: HexColor('#999999'),
+                          BodyText('Akla gelen ilk anlamı', '#000000'),
+                          TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Akla gelen ilk anlamı boş bırakılmaması';
+                              } return null;
+                            },
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            style: TextStyle(
+                              color: HexColor('#999999'),
+                            ),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Bilgi eklemek için buraya dokun",
+                            ),
+                            onSaved: (newValue) {
+                              print('İlk anlamı: $newValue');
+                            },
+                          ),
+                          BodyText('Örnek', '#000000'),
+                          TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Örnek boş bırakılmamalı';
+                              } return null;
+                            },
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            style: TextStyle(
+                              color: HexColor('#999999'),
+                            ),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Bilgi eklemek için buraya dokun",
+                            ),
+                            onSaved: (newValue) {
+                              print('Örnek: $newValue');
+                            },
+                          ),
+                          BodyText('Ek açıklamalar', '#000000'),
+                          TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Ek açıklamalar boş bırakılmaması';
+                              } return null;
+                            },
+                            controller: controller,
+                            keyboardType: TextInputType.multiline,
+                            maxLines: null,
+                            style: TextStyle(
+                              color: HexColor('#999999'),
+                            ),
+                            decoration: const InputDecoration(
+                              border: InputBorder.none,
+                              hintText: "Bilgi eklemek için buraya dokun",
+                            ),
+                            onSaved: (newValue) {
+                              print('Ek açıklama: $newValue');
+                            },
+                          ),
+                          Center(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 37),
+                              child: ElevatedButton(
+                                style: OutlinedButton.styleFrom(
+                                  backgroundColor: HexColor("#007AFF"),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  final isOk = _formKey.currentState?.validate();
+                                  if (isOk == true) {
+                                    _formKey.currentState?.save();
+                                    print(termTitle);
+                                    print('Kayıt oldu');
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            const Home()),
+                                  );
+                                  }
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: BodyText("Tamamla", "#FFFFFF"),
+                                ),
                               ),
-                              decoration: const InputDecoration(
-                                border: InputBorder.none,
-                                hintText: "Bilgi eklemek için buraya dokun",
-                              ),
-                              onChanged: (value) {
-                                setState(() {
-                                  termMean = value;
-                                });
-                              },
                             ),
                           ),
                         ],
                       ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        BodyText('Akla gelen ilk anlamı', '#000000'),
-                        TextField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          style: TextStyle(
-                            color: HexColor('#999999'),
-                          ),
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Bilgi eklemek için buraya dokun",
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              termMean = value;
-                            });
-                          },
-                        ),
-                        BodyText('Örnek', '#000000'),
-                        TextField(
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          style: TextStyle(
-                            color: HexColor('#999999'),
-                          ),
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Bilgi eklemek için buraya dokun",
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              termExample = value;
-                            });
-                          },
-                        ),
-                        BodyText('Ek açıklamalar', '#000000'),
-                        TextField(
-                          controller: controller,
-                          keyboardType: TextInputType.multiline,
-                          maxLines: null,
-                          style: TextStyle(
-                            color: HexColor('#999999'),
-                          ),
-                          decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            hintText: "Bilgi eklemek için buraya dokun",
-                          ),
-                          onChanged: (value) {
-                            setState(() {
-                              termDescription = value;
-                            });
-                          },
-                        ),
-                        Center(
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 37),
-                            child: OutlinedButton(
-                              style: OutlinedButton.styleFrom(
-                                backgroundColor: HexColor("#007AFF"),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
-                                ),
-                              ),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                      const HomePage()),
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: BodyText("Tamamla", "#FFFFFF"),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
