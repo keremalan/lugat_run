@@ -344,174 +344,191 @@ class _ForgotPasswordState extends State<ForgotPassword> {
 
 class ForgotPasswordStep2 extends StatefulWidget {
   const ForgotPasswordStep2({Key? key}) : super(key: key);
-
   @override
   _ForgotPasswordStep2State createState() => _ForgotPasswordStep2State();
 }
 
 class _ForgotPasswordStep2State extends State<ForgotPasswordStep2> {
+  final _formKey = GlobalKey<FormState>();
   // for visuality
-  String userPhone = "5347437751";
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 25.6.h,
-              decoration: BoxDecoration(
-                color: HexColor("#E5E5E5"),
-              ),
-              child: Column(
-                children: [
-                  RegisterAppBar(),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 34),
-                    child: RegisterHead(
-                        titleText: 'Şifre yenile',
-                        subheadText: 'Onay kodunuzu girin ve şifrenizi tanımlayın.'
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              Container(
+                height: 25.6.h,
+                decoration: BoxDecoration(
+                  color: HexColor("#E5E5E5"),
+                ),
+                child: Column(
+                  children: [
+                    RegisterAppBar(),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 34),
+                      child: RegisterHead(
+                          titleText: 'Şifre yenile',
+                          subheadText: 'Onay kodunuzu girin ve şifrenizi tanımlayın.'
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                  top: 22, right: 34, bottom: 22, left: 34),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const RegisterBodyHead(
-                    headlineText: 'Onay kodunu girin',
-                    captionText: 'Onay kodunuzla birlikte şifrenizi yeniden tanımlayın.',
-                  ),
-                  Caption2Text("Onay kodu", "#9D9D9D"),
-                  Container(
-                    width: 358,
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: HexColor("#D9D9D9"),
-                          width: 1,
+              Padding(
+                padding: const EdgeInsets.only(
+                    top: 22, right: 34, bottom: 22, left: 34),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const RegisterBodyHead(
+                      headlineText: 'Onay kodunu girin',
+                      captionText: 'Onay kodunuzla birlikte şifrenizi yeniden tanımlayın.',
+                    ),
+                    Caption2Text("Onay kodu", "#9D9D9D"),
+                    Container(
+                      width: 358,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: HexColor("#D9D9D9"),
+                            width: 1,
+                          ),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              userEmail,
+                              style: TextStyle(
+                                fontSize: 16,
+                              ),
+                            ),
+                            FilledButton(130.0, "#FFFFFF", "#000000", "Yeniden gönder"),
+                          ],
                         ),
                       ),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            userEmail,
-                            style: TextStyle(
-                              fontSize: 16,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16, top: 12),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Şifrenizi boş bırakmamalısınız';
+                          } return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'Şifreniz',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
                             ),
                           ),
-                          FilledButton(130.0, "#FFFFFF", "#000000", "Yeniden gönder"),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16, top: 12),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'Şifreniz',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userPassword = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: TextField(
-                      textAlignVertical: TextAlignVertical.center,
-                      decoration: InputDecoration(
-                        labelText: 'Şifrenizi onaylayın',
-                        contentPadding: EdgeInsets.only(bottom: 8),
-                        labelStyle: TextStyle(
-                          color: HexColor("#999999"),
-                        ),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#D9D9D9"),
-                          ),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                            color: HexColor("#000000"),
-                          ),
-                        ),
-                      ),
-                      obscureText: true,
-                      enableSuggestions: false,
-                      autocorrect: false,
-                      onChanged: (value) {
-                        print(value);
-                        setState(() {
-                          userPasswordCheck = value;
-                        });
-                      },
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 12),
-                    child: Center(
-                      child: SizedBox(
-                        width: 120,
-                        child: OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: HexColor("#000000"),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
                             ),
                           ),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                  const ForgotPasswordStep3()),
-                            );
-                          },
-                          child: Caption1Text("Tamamla", "#FFFFFF"),
+                        ),
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userPassword = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16),
+                      child: TextFormField(
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Şifre onayını boş bırakmamalısınız';
+                          } return null;
+                        },
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          labelText: 'Şifrenizi onaylayın',
+                          contentPadding: EdgeInsets.only(bottom: 8),
+                          labelStyle: TextStyle(
+                            color: HexColor("#999999"),
+                          ),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#D9D9D9"),
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: HexColor("#000000"),
+                            ),
+                          ),
+                        ),
+                        obscureText: true,
+                        enableSuggestions: false,
+                        autocorrect: false,
+                        onChanged: (value) {
+                          print(value);
+                          setState(() {
+                            userPasswordCheck = value;
+                          });
+                        },
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 12),
+                      child: Center(
+                        child: SizedBox(
+                          width: 120,
+                          child: ElevatedButton(
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: HexColor("#000000"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Şifreniz değiştirildi')),
+                                );
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const ForgotPasswordStep3()),
+                              );
+                              }
+                            },
+                            child: Caption1Text("Tamamla", "#FFFFFF"),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Center(
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: Caption2Text('Yardıma ihtiyacım var', '#9D9D9D'),
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 16),
+                        child: Caption2Text('Yardıma ihtiyacım var', '#9D9D9D'),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

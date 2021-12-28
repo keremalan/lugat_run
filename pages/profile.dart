@@ -6,6 +6,7 @@ import 'package:lugat_run/main.dart';
 import 'package:lugat_run/pages/category.dart';
 import 'package:lugat_run/pages/error.dart';
 import 'package:lugat_run/pages/homeside.dart';
+import 'package:lugat_run/pages/term.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
@@ -138,7 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-class TermOverviewCard extends StatelessWidget {
+class TermOverviewCard extends StatefulWidget {
   TermOverviewCard({
     Key? key,
     required this.termImageUrl,
@@ -150,31 +151,105 @@ class TermOverviewCard extends StatelessWidget {
   String termDescription;
 
   @override
+  State<TermOverviewCard> createState() => _TermOverviewCardState();
+}
+
+class _TermOverviewCardState extends State<TermOverviewCard> {
+  bool isVisible = false;
+  @override
+
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
-          child: Row(
+          child: Column(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(30),
-                child: Image.network(
-                  "$termImageUrl",
-                  height: 40,
-                  width: 40,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(30),
+                        child: Image.network(
+                          "${widget.termImageUrl}",
+                          height: 40,
+                          width: 40,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SubheadText('${widget.termName}', '#000000'),
+                            Caption2Text('${widget.termDescription}', '#808080'),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    width: 12.w,
+                    child: TextButton(onPressed: () {
+                      setState(() {
+                        isVisible = !isVisible;
+                      });
+                    }, child: Icon(Icons.expand_more, color: HexColor('#9D9D9D'), size: 24)),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SubheadText('$termName', '#000000'),
-                    Caption2Text('$termDescription', '#808080'),
-                  ],
+              Visibility(
+                visible: isVisible,
+                child: SizedBox(
+                  width:85.w,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top:10.0, left: 30),
+                    child: Wrap(
+                      spacing: 10,
+                      runSpacing: 1,
+                        alignment: WrapAlignment.center,
+                        children: [
+                          OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: HexColor("#FFFFFF"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const TermPage()),
+                              );
+                            },
+                            child: Caption1Text("Katkı sağla", "#000000"),
+                          ),
+                          OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              backgroundColor: HexColor("#FFFFFF"),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const TermPage()),
+                              );
+                            },
+                            child: Caption1Text("Bildir", "#000000"),
+                          ),
+                        ],
+                      ),
+                  ),
                 ),
               ),
             ],

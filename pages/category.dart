@@ -94,8 +94,9 @@ class _CategoryPageState extends State<CategoryPage> {
                           children: [
                             HeadlineText('Terimler', '#000000'),
                             PopupMenuButton<int>(
+                              offset: Offset(-10, 36),
                               elevation: 0,
-                              color: HexColor('#000000').withOpacity(0.6),
+                              color: HexColor('#000000').withOpacity(0.8),
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(Radius.circular(6)),
                               ),
