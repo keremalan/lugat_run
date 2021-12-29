@@ -216,7 +216,7 @@ class _AddTermPageState extends State<AddTermPage> {
                           children: [
                             Title2Text('Terim adı', '#000000'),
                             Padding(
-                              padding: const EdgeInsets.only(bottom: 12),
+                              padding: const EdgeInsets.only(bottom: 0),
                               child: TextFormField(
                                 validator: (value) {
                                   if (value == null || value.isEmpty) {
@@ -243,7 +243,10 @@ class _AddTermPageState extends State<AddTermPage> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          BodyText('Akla gelen ilk anlamı', '#000000'),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: BodyText('Akla gelen ilk anlamı', '#000000'),
+                          ),
                           TextFormField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -263,7 +266,10 @@ class _AddTermPageState extends State<AddTermPage> {
                               print('İlk anlamı: $newValue');
                             },
                           ),
-                          BodyText('Örnek', '#000000'),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: BodyText('Örnek', '#000000'),
+                          ),
                           TextFormField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -283,7 +289,10 @@ class _AddTermPageState extends State<AddTermPage> {
                               print('Örnek: $newValue');
                             },
                           ),
-                          BodyText('Ek açıklamalar', '#000000'),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 16),
+                            child: BodyText('Ek açıklamalar', '#000000'),
+                          ),
                           TextFormField(
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -329,7 +338,7 @@ class _AddTermPageState extends State<AddTermPage> {
                                   }
                                 },
                                 child: Padding(
-                                  padding: const EdgeInsets.all(10.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: BodyText("Tamamla", "#FFFFFF"),
                                 ),
                               ),

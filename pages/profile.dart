@@ -869,7 +869,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       children: [
                         Row(
                           children: [
-                            HeadlineText('Bildirimlerim', '#000000'),
+                            Title2Text('Bildirimlerim', '#000000'),
                           ],
                         ),
                       ],
@@ -927,7 +927,7 @@ class LugatAppBarNotification extends StatelessWidget
       title: const Padding(
         padding: EdgeInsets.only(left: 12),
         child: Text(
-          "Bildirimlerim",
+          "",
           style: TextStyle(
             color: Colors.black,
           ),
