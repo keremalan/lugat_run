@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lugat_run/pages/category.dart';
 import 'texts.dart';
 import 'buttons.dart';
+import 'package:http/http.dart';
 
 Widget PopularCategoryCard(categoryImgUrl, categoryName) {
   return Padding(
