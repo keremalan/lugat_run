@@ -1,4 +1,7 @@
 import 'dart:ui';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../widgets/divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
@@ -185,6 +188,7 @@ class AddTermPage extends StatefulWidget {
 class _AddTermPageState extends State<AddTermPage> {
   final _formKey = GlobalKey<FormState>();
   final controller = TextEditingController();
+  final Map<String, dynamic> entry = {};
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -233,7 +237,7 @@ class _AddTermPageState extends State<AddTermPage> {
                                   hintText: "Bilgi eklemek için buraya dokun",
                                 ),
                                 onSaved: (newValue) {
-                                  print('Terim adı: $newValue');
+                                  entry['titleName'] = newValue;
                                 },
                               ),
                             ),
@@ -263,7 +267,7 @@ class _AddTermPageState extends State<AddTermPage> {
                               hintText: "Bilgi eklemek için buraya dokun",
                             ),
                             onSaved: (newValue) {
-                              print('İlk anlamı: $newValue');
+                              entry['titleMean'] = newValue;
                             },
                           ),
                           Padding(
@@ -286,7 +290,7 @@ class _AddTermPageState extends State<AddTermPage> {
                               hintText: "Bilgi eklemek için buraya dokun",
                             ),
                             onSaved: (newValue) {
-                              print('Örnek: $newValue');
+                              entry['titleExample'] = newValue;
                             },
                           ),
                           Padding(
@@ -310,7 +314,9 @@ class _AddTermPageState extends State<AddTermPage> {
                               hintText: "Bilgi eklemek için buraya dokun",
                             ),
                             onSaved: (newValue) {
-                              print('Ek açıklama: $newValue');
+                              entry['titleDescription'] = newValue;
+                              entry['termAuthor'] = FirebaseAuth.instance.currentUser!.displayName!;
+                              entry['isSaved'] = false;
                             },
                           ),
                           Center(
@@ -324,11 +330,12 @@ class _AddTermPageState extends State<AddTermPage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  final isOk = _formKey.currentState?.validate();
-                                  if (isOk == true) {
-                                    _formKey.currentState?.save();
-                                    print(termTitle);
-                                    print('Kayıt oldu');
+                                  final formState = _formKey.currentState;
+                                  if (formState == null) return;
+                                  if (formState.validate() == true) {
+                                    formState.save();
+                                    print(entry);
+                                    // FirebaseFirestore.instance.collection('terms').add(term.toMap());
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

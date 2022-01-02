@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -87,40 +88,48 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.network('https://www.upload.ee/image/13759867/Large_Title.png'),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 24),
+              child: Image.network('https://www.upload.ee/image/13759867/Large_Title.png'),
+            ),
             Center(child: isFirebaseInitialized
                 ? TextButton(onPressed: () async {
               await signInWithGoogle();
+              var uid = FirebaseAuth.instance.currentUser!.uid;
+               await FirebaseFirestore.instance.collection('users').doc(uid).set(
+                {
+                  'isLogged': true,
+                  'lastLogInDate': FieldValue.serverTimestamp(),
+                },
+                SetOptions(merge: true),
+              );
               goHome();
-            }, child: Padding(
-              padding: const EdgeInsets.only(top: 24.0),
-              child: Container(
-                width: 40.w,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  border: Border.all(
-                    color: Colors.grey,
+            }, child: Container(
+              width: 40.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                border: Border.all(
+                  color: Colors.grey,
+                ),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png',
+                    height: 16,
+                    width: 16,),
                   ),
-                ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 8),
-                      child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png',
-                      height: 16,
-                      width: 16,),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('Google ile giriş yap',
-                      style: TextStyle(
-                          color: Colors.black
-                      )),
-                    ),
-                  ],
-                ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('Google ile giriş yap',
+                    style: TextStyle(
+                        color: Colors.black
+                    )),
+                  ),
+                ],
               ),
             ))
                 : CircularProgressIndicator())
