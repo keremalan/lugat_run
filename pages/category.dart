@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../widgets/divider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
@@ -178,19 +178,14 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 }
 
-class AddTermPage extends StatefulWidget {
-  const AddTermPage({Key? key}) : super(key: key);
-
-  @override
-  _AddTermPageState createState() => _AddTermPageState();
-}
-
-class _AddTermPageState extends State<AddTermPage> {
+class AddTermPage extends ConsumerWidget {
+  AddTermPage({Key? key}) : super(key: key);
   final _formKey = GlobalKey<FormState>();
   final controller = TextEditingController();
   final Map<String, dynamic> entry = {};
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final TermRepository = ref.watch(termsProvider);
     return Material(
       child: Container(
         decoration: BoxDecoration(
@@ -219,6 +214,7 @@ class _AddTermPageState extends State<AddTermPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Title2Text('Terim adı', '#000000'),
+                            // Text('${ref.watch(termsProvider).terms.first.termAuthor}'),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 0),
                               child: TextFormField(
@@ -456,7 +452,7 @@ class LugatAppBarCategory extends StatelessWidget
           child: GestureDetector(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const AddTermPage()),
+                    builder: (context) => AddTermPage()),
                 );
               },
               child: Icon(Icons.add)),

@@ -19,9 +19,10 @@ import './pages/register.dart';
 import './pages/login.dart';
 import './pages/error.dart';
 import 'package:sizer/sizer.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(const Lugat_Run());
+void main() => runApp(ProviderScope(child: Lugat_Run()));
 
 // Home Page
 
