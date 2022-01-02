@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
@@ -38,7 +39,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 6),
-                        child: ProfileHead(userName: 'Kerem Alan', userTitle: 'Arayüz Tasarımcısı', userCompany: 'Geight', userNotificationValue: '32',),
+                        child: ProfileHead(userName: '${FirebaseAuth.instance.currentUser!.displayName!}', userTitle: 'Arayüz Tasarımcısı', userCompany: 'Geight', userNotificationValue: '32',),
                       ),
                     ],
                   ),
@@ -405,7 +406,7 @@ class ProfileHead extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(30),
               child: Image.network(
-                "https://www.upload.ee/image/13739086/profile.jpeg",
+                "${FirebaseAuth.instance.currentUser!.photoURL!}",
                 height: 50,
                 width: 50,
               ),

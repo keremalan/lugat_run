@@ -22,6 +22,17 @@ Widget Caption2Text(text, hexColor) {
   );
 }
 
+Widget Caption2TextPopularCategory(text, hexColor) {
+  return Text(
+    "${text}",
+    style: TextStyle(
+      fontSize: 13,
+      overflow: TextOverflow.ellipsis,
+      color: HexColor("${hexColor}"),
+    ),
+  );
+}
+
 Widget FootnoteText(text, hexColor) {
   return Text(
     "${text}",

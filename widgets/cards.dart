@@ -11,10 +11,6 @@ Widget PopularCategoryCard(categoryImgUrl, categoryName) {
     padding: const EdgeInsets.only(right: 10),
     child: Container(
       decoration: BoxDecoration(
-        border: Border.all(
-          color: HexColor("#BEBEBE"),
-          width: 0.5,
-        ),
         borderRadius: BorderRadius.all(
           Radius.circular(6),
         ),
@@ -27,14 +23,22 @@ Widget PopularCategoryCard(categoryImgUrl, categoryName) {
               borderRadius: BorderRadius.circular(100),
               child: Image.network(
                 "${categoryImgUrl}",
-                height: 50,
-                width: 50,
+                height: 60,
+                width: 60,
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(right: 4, left: 4, bottom: 7),
-            child: Caption2Text("${categoryName}", "#BEBEBE"),
+          SizedBox(
+            width: 80,
+            child: Padding(
+              padding: EdgeInsets.only(right: 4, left: 4, bottom: 7),
+              child: Center(
+                child: Caption2TextPopularCategory(
+                    "${categoryName}",
+                    "#BEBEBE"
+                ),
+              ),
+            ),
           ),
         ],
       ),
@@ -44,11 +48,11 @@ Widget PopularCategoryCard(categoryImgUrl, categoryName) {
 
 Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
   return Padding(
-    padding: const EdgeInsets.only(top: 22.0),
+    padding: const EdgeInsets.only(top: 8.0),
     child: Container(
       height: 330,
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
+        // border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(6),
         image: DecorationImage(
           image: NetworkImage("${categoryImageUrl}"),
@@ -67,7 +71,7 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Caption2Text("Günün kelimesi", "#FFFFFF"),
-                    Caption2Text("Tipografi", "#FFFFFF"),
+                    Caption2Text("Mutlu yıllar", "#FFFFFF"),
                   ],
                 ),
               ],

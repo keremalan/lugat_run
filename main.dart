@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +11,14 @@ import 'package:lugat_run/pages/explore.dart';
 import 'package:lugat_run/pages/homeside.dart';
 import 'package:lugat_run/pages/profile.dart';
 import 'package:lugat_run/pages/test.dart';
+import 'package:lugat_run/utilities/google_sign_in.dart';
 import 'widgets/texts.dart';
 import 'widgets/cards.dart';
 import './pages/register.dart';
 import './pages/login.dart';
 import './pages/error.dart';
 import 'package:sizer/sizer.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() => runApp(const Lugat_Run());
 
@@ -42,11 +46,89 @@ class _Lugat_RunState extends State<Lugat_Run> {
           '/error': (context) => const ErrorPage(),
         },
         theme: MyAppThemes.appThemeLight(),
-        home: const Home(),
+        home: const SplashScreen(),
       );
     },);
   }
 }
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  bool isFirebaseInitialized = false;
+  @override
+  void initState() {
+    super.initState();
+    initializeFirebase();
+  }
+
+  Future<void> initializeFirebase() async {
+    await Firebase.initializeApp();
+    setState(() {
+      isFirebaseInitialized = true;
+    });
+    if (FirebaseAuth.instance.currentUser != null) {
+      goHome();
+    }
+    // goHome();
+  }
+
+  void goHome() {
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home()));
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.network('https://www.upload.ee/image/13759867/Large_Title.png'),
+            Center(child: isFirebaseInitialized
+                ? TextButton(onPressed: () async {
+              await signInWithGoogle();
+              goHome();
+            }, child: Padding(
+              padding: const EdgeInsets.only(top: 24.0),
+              child: Container(
+                width: 40.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(
+                    color: Colors.grey,
+                  ),
+                ),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 8),
+                      child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/1200px-Google_%22G%22_Logo.svg.png',
+                      height: 16,
+                      width: 16,),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Google ile giriş yap',
+                      style: TextStyle(
+                          color: Colors.black
+                      )),
+                    ),
+                  ],
+                ),
+              ),
+            ))
+                : CircularProgressIndicator())
+          ],
+        ));
+  }
+}
+
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -129,7 +211,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             SearchBar('Aramak istediğiniz terimi girin'),
             Padding(
-              padding: const EdgeInsets.only(top: 32, bottom: 8),
+              padding: const EdgeInsets.only(top: 32, bottom: 2),
               child: DescriptionText("Öne çıkan kategoriler"),
             ),
             SingleChildScrollView(
@@ -141,24 +223,24 @@ class _HomePageState extends State<HomePage> {
                     "Yapay Zeka",
                   ),
                   PopularCategoryCard(
-                    "https://www.upload.ee/image/13731286/ai.png",
-                    "Pamuk Zeka",
+                    "https://www.upload.ee/image/13757839/metaverse.png",
+                    "Metaverse",
                   ),
                   PopularCategoryCard(
-                    "https://www.upload.ee/image/13731286/ai.png",
-                    "Demir Zeka",
+                    "https://www.upload.ee/image/13757844/front-end.png",
+                    "Front-end",
                   ),
                   PopularCategoryCard(
-                    "https://www.upload.ee/image/13731286/ai.png",
-                    "Über Zeka",
+                    "https://www.upload.ee/image/13757847/back-end.png",
+                    "Back-end",
                   ),
                   PopularCategoryCard(
-                    "https://www.upload.ee/image/13731286/ai.png",
-                    "Fahri Zeka",
+                    "https://www.upload.ee/image/13757855/UI__1_.png",
+                    "UI",
                   ),
                   PopularCategoryCard(
-                    "https://www.upload.ee/image/13731286/ai.png",
-                    "Soyut Zeka",
+                    "https://www.upload.ee/image/13757856/UX.png",
+                    "UX",
                   ),
                 ],
               ),
@@ -169,11 +251,11 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => const CategoryPage()),
                 );
               },
-              child: CategoryCard("Tasarım", "128",
-                  "https://www.upload.ee/image/13731805/designCategory.png"),
+              child: CategoryCard("Yeni yıl", "1",
+                  "https://www.upload.ee/image/13757910/newyear__3_.png"),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 32, bottom: 2),
+              padding: const EdgeInsets.only(top: 22, bottom: 2),
               child: DescriptionText("Kategoriler"),
             ),
             CategoryTitle("Tasarım"),
@@ -186,12 +268,12 @@ class _HomePageState extends State<HomePage> {
                       "Prototip",
                       "Kerem Alan"),
                   CategoryTermCard(
-                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                      "Frototip",
+                      "https://www.upload.ee/image/13757855/UI__1_.png",
+                      "UI",
                       "Gökhan Falan"),
                   CategoryTermCard(
-                      "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                      "Brototip",
+                      "https://www.upload.ee/image/13757856/UX.png",
+                      "UX",
                       "Türkmen Köyhan"),
                   CategoryTermCard(
                       "https://www.upload.ee/image/13731924/prototypeTerm.png",
@@ -208,16 +290,16 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   children: [
                     CategoryTermCard(
-                        "https://www.upload.ee/image/13731960/softwareTerm.png",
-                        "Prototip",
+                        "https://www.upload.ee/image/13757844/front-end.png",
+                        "Front-end",
                         "Kerem Alan"),
                     CategoryTermCard(
-                        "https://www.upload.ee/image/13731960/softwareTerm.png",
-                        "Frototip",
+                        "https://www.upload.ee/image/13757847/back-end.png",
+                        "Back-end",
                         "Gökhan Falan"),
                     CategoryTermCard(
                         "https://www.upload.ee/image/13731960/softwareTerm.png",
-                        "Brototip",
+                        "Git",
                         "Türkmen Köyhan"),
                     CategoryTermCard(
                         "https://www.upload.ee/image/13731960/softwareTerm.png",

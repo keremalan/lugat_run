@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
+import 'package:lugat_run/utilities/google_sign_in.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
@@ -90,6 +91,17 @@ class _HomeSideState extends State<HomeSide> {
                 child: const HomeSideItem(
                     itemTitle: 'Yol haritası',
                     itemDesc: 'Lügatın geleceğini inceleyin ve söz sahibi olun.',
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 32),
+                child: TextButton(
+                  onPressed: () async {
+                    await signOutWithGoogle();
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const SplashScreen()),
+                    );
+                  },
+                  child: Text("Çıkış yap"),
                 ),
               ),
             ],
