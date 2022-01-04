@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:lugat_run/main.dart';
+import 'package:lugat_run/pages/category.dart';
 import 'package:lugat_run/pages/profile.dart';
 import '../widgets/cards.dart';
 import 'package:lugat_run/pages/error.dart';
@@ -22,6 +23,14 @@ class TermPage extends StatefulWidget {
 }
 
 class _TermPageState extends State<TermPage> {
+  bool isEditable = true;
+  String editButtonText = "Katkı sağla";
+  String editingButtonText = "Tamamla";
+  bool isVisible = true;
+  final _controller = TextEditingController();
+  String termTitle = "Diyafram";
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -38,7 +47,7 @@ class _TermPageState extends State<TermPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 0),
                   child: Column(
                     children: [
-                      TermCard('Fotoğrafçılık', 'Diyafram', 'Ecrenur Mut', 'https://www.upload.ee/image/13763015/diyafram__1_.png'),
+                      TermCard('Fotoğrafçılık', '$termTitle', 'Ecrenur Mut', 'https://www.upload.ee/image/13763015/diyafram__1_.png'),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Column(
@@ -49,14 +58,24 @@ class _TermPageState extends State<TermPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  HeadlineText('Diyafram', '#000000'),
+                                  HeadlineText('$termTitle', '#000000'),
                                   Row(
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.only(right: 10),
                                         child: Caption2Text('Önerileri incele', '#001FC6'),
                                       ),
-                                      Caption2Text('Katkı yap', '#001FC6'),
+                                      Visibility(
+                                        visible: isEditable,
+                                        child: TextButton(
+                                          onPressed: () {
+                                            setState(() {
+                                              isEditable = !isEditable;
+                                            });
+                                          },
+                                            child: isEditable ? Caption2Text('$editButtonText', '#001FC6') : Caption2Text('$editingButtonText', '#001FC6'),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -71,7 +90,30 @@ class _TermPageState extends State<TermPage> {
                                     padding: const EdgeInsets.only(bottom: 4),
                                     child: BodyText('Akla gelen ilk anlamı', '#000000'),
                                   ),
-                                  BodyText('Lensin alacağı ışık miktarını belirleyen değerdir.', '#999999'),
+                                  Visibility(visible: isEditable, child: BodyText('$termTitle', '#999999')),
+                                  Visibility(
+                                    visible: isEditable == false,
+                                    child: Form(
+                                      key: _formKey,
+                                      child: Column(
+                                        children: [
+                                          TextFormField(
+                                            validator: (value) {
+                                              if ( value == null || value.isEmpty) {
+                                                return 'Terim adı boş bırakılamaz!';
+                                              } return null;
+                                            },
+                                            maxLength: 16,
+                                            controller: _controller,
+                                            decoration: InputDecoration(
+                                              hintText: '$termTitle',
+                                              suffixIcon: TextButton(onPressed: () {_formKey.currentState!.validate();}, child: Icon(Icons.check)),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 22, bottom: 4),
                                     child: BodyText('Örnek', '#000000'),
@@ -82,6 +124,15 @@ class _TermPageState extends State<TermPage> {
                                     child: BodyText('Ek açıklamalar', '#000000'),
                                   ),
                                   BodyText("Karanlık film ve dizi sahnelerinde de diyaframı kapalı, benzeri bir kullanım görülebilir.", '#999999'),
+                                  Visibility(
+                                    visible: isEditable == false,
+                                    child: TextButton(onPressed: () {
+                                      setState(() {
+                                        isEditable = !isEditable;
+                                        termTitle = _controller.text;
+                                      });
+                                    }, child: Text('Tamamla')),
+                                  ),
                                 ],
                               ),
                             ),
@@ -145,15 +196,6 @@ class LugatAppBarTerm extends StatelessWidget
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      title: const Padding(
-        padding: EdgeInsets.only(left: 12),
-        child: Text(
-          "Prototip",
-          style: TextStyle(
-            color: Colors.black,
-          ),
-        ),
-      ),
     );
   }
 }
