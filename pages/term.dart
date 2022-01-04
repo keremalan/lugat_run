@@ -38,7 +38,7 @@ class _TermPageState extends State<TermPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 0),
                   child: Column(
                     children: [
-                      TermCard('Tasarım', 'Prototip', 'Kerem Alan', 'https://www.upload.ee/image/13740439/prototypeTerm__5_.png'),
+                      TermCard('Fotoğrafçılık', 'Diyafram', 'Ecrenur Mut', 'https://www.upload.ee/image/13763015/diyafram__1_.png'),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Column(
@@ -49,7 +49,7 @@ class _TermPageState extends State<TermPage> {
                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
-                                  HeadlineText('Prototip', '#000000'),
+                                  HeadlineText('Diyafram', '#000000'),
                                   Row(
                                     children: [
                                       Padding(
@@ -71,17 +71,17 @@ class _TermPageState extends State<TermPage> {
                                     padding: const EdgeInsets.only(bottom: 4),
                                     child: BodyText('Akla gelen ilk anlamı', '#000000'),
                                   ),
-                                  BodyText('Bilgisayar ile diğer cihazların bağlantısını kurmaya yarayan veriyolu.', '#999999'),
+                                  BodyText('Lensin alacağı ışık miktarını belirleyen değerdir.', '#999999'),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 22, bottom: 4),
                                     child: BodyText('Örnek', '#000000'),
                                   ),
-                                  BodyText("iPhone 6 cihazınızı bilgisayara bağlamak için bilgisayarınızın USB girişini ve iPhone’unuzun lightining girişini kullanırsınız.", '#999999'),
+                                  BodyText("Analog cihazlarda diyafram butonunun çevrilmesi ile düzenlenir. Dijital cihazlarda otomatik düzenlenebilir.", '#999999'),
                                   Padding(
                                     padding: const EdgeInsets.only(top: 22, bottom: 4),
                                     child: BodyText('Ek açıklamalar', '#000000'),
                                   ),
-                                  BodyText("USB, ülkemizde aynı zamanda flash bellek anlamında da kullanılabilmektedir. Flash bellek ise bilgisayarınızdaki bir dosyayı farklı bir cihaza aktarmak için kullandığınız nispeten küçük depolama alanlarına sahip taşınabilir cihazlardır.", '#999999'),
+                                  BodyText("Karanlık film ve dizi sahnelerinde de diyaframı kapalı, benzeri bir kullanım görülebilir.", '#999999'),
                                 ],
                               ),
                             ),

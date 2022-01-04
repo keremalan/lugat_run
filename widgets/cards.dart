@@ -71,7 +71,7 @@ Widget CategoryCard(categoryName, categoryTermValue, categoryImageUrl) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Caption2Text("Günün kelimesi", "#FFFFFF"),
-                    Caption2Text("Mutlu yıllar", "#FFFFFF"),
+                    Caption2Text("Diyafram", "#FFFFFF"),
                   ],
                 ),
               ],

@@ -261,8 +261,8 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => const CategoryPage()),
                 );
               },
-              child: CategoryCard("Yeni yıl", "1",
-                  "https://www.upload.ee/image/13757910/newyear__3_.png"),
+              child: CategoryCard("Fotoğrafçılık", "1",
+                  "https://www.upload.ee/image/13763005/diyafram.png"),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 22, bottom: 2),

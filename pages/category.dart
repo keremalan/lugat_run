@@ -88,8 +88,8 @@ class _CategoryPageState extends State<CategoryPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
-                      CategoryCard("Tasarım", "128",
-                          "https://www.upload.ee/image/13731805/designCategory.png"),
+                      CategoryCard("Fotoğrafçılık", "47",
+                          "https://www.upload.ee/image/13763005/diyafram.png"),
                       Padding(
                         padding: const EdgeInsets.only(top: 12),
                         child: Row(
@@ -139,10 +139,10 @@ class _CategoryPageState extends State<CategoryPage> {
                             },
                             child: TermOverviewCard(
                                 termImageUrl:
-                                "https://www.upload.ee/image/13731924/prototypeTerm.png",
-                                termName: 'Prototip',
+                                "https://www.upload.ee/image/13763015/diyafram__1_.png",
+                                termName: 'Diyafram',
                                 termDescription:
-                                'Ürün geliştirme sürecinde, ürünün kı...'),
+                                'Lensin aldığı ışık miktarı'),
                           ),
                           TermOverviewCard(
                               termImageUrl:
@@ -440,7 +440,7 @@ class LugatAppBarCategory extends StatelessWidget
       title: const Padding(
         padding: EdgeInsets.only(left: 12),
         child: Text(
-          "Tasarım",
+          "Fotoğrafçılık",
           style: TextStyle(
             color: Colors.black,
           ),
