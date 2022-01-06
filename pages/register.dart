@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:lugat_run/main.dart';
+import 'package:lugat/main.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
 import '../widgets/cards.dart';
@@ -667,7 +667,7 @@ class _RegisterPageStep4State extends State<RegisterPageStep4> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Lugat_Run()),
+                                builder: (context) => Lugat()),
                           );
                         },
                         child: Caption1Text("Tamamla", "#FFFFFF"),

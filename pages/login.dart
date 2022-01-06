@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:lugat_run/main.dart';
-import 'package:lugat_run/pages/homeside.dart';
-import 'package:lugat_run/pages/register.dart';
+import 'package:lugat/main.dart';
+import 'package:lugat/pages/homeside.dart';
+import 'package:lugat/pages/register.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
 import 'package:sizer/sizer.dart';

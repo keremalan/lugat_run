@@ -7,12 +7,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:lugat_run/main.dart';
-import 'package:lugat_run/pages/profile.dart';
-import 'package:lugat_run/pages/term.dart';
+import 'package:lugat/main.dart';
+import 'package:lugat/pages/profile.dart';
+import 'package:lugat/pages/term.dart';
 import '../widgets/cards.dart';
-import 'package:lugat_run/pages/error.dart';
-import 'package:lugat_run/pages/homeside.dart';
+import 'package:lugat/pages/error.dart';
+import 'package:lugat/pages/homeside.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 import '../widgets/buttons.dart';
 import '../widgets/texts.dart';
@@ -183,6 +183,7 @@ class AddTermPage extends ConsumerWidget {
   final _formKey = GlobalKey<FormState>();
   final controller = TextEditingController();
   final Map<String, dynamic> entry = {};
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final TermRepository = ref.watch(termsProvider);
@@ -214,7 +215,7 @@ class AddTermPage extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Title2Text('Terim adı', '#000000'),
-                            // Text('${ref.watch(termsProvider).terms.first.termAuthor}'),
+                            Text('${ref.watch(termsProvider).terms.first.termAuthor}'),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 0),
                               child: TextFormField(
@@ -331,7 +332,11 @@ class AddTermPage extends ConsumerWidget {
                                   if (formState.validate() == true) {
                                     formState.save();
                                     print(entry);
-                                    // FirebaseFirestore.instance.collection('terms').add(term.toMap());
+                                    FirebaseFirestore.instance.collection('terms').add({
+                                      'entry': entry,
+                                    });
+
+
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

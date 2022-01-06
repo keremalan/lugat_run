@@ -4,15 +4,21 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:lugat_run/pages/album.dart';
-import 'package:lugat_run/pages/bookmark.dart';
-import 'package:lugat_run/pages/category.dart';
-import 'package:lugat_run/pages/error.dart';
-import 'package:lugat_run/pages/explore.dart';
-import 'package:lugat_run/pages/homeside.dart';
-import 'package:lugat_run/pages/profile.dart';
-import 'package:lugat_run/pages/test.dart';
-import 'package:lugat_run/utilities/google_sign_in.dart';
+import 'package:lugat/pages/album.dart';
+import 'package:lugat/pages/bookmark.dart';
+import 'package:lugat/pages/category.dart';
+import 'package:lugat/pages/explore.dart';
+import 'package:lugat/pages/homeside.dart';
+import 'package:lugat/pages/profile.dart';
+import 'package:lugat/pages/album.dart';
+import 'package:lugat/pages/bookmark.dart';
+import 'package:lugat/pages/category.dart';
+import 'package:lugat/pages/error.dart';
+import 'package:lugat/pages/explore.dart';
+import 'package:lugat/pages/homeside.dart';
+import 'package:lugat/pages/profile.dart';
+import 'package:lugat/pages/test.dart';
+import 'package:lugat/utilities/google_sign_in.dart';
 import 'widgets/texts.dart';
 import 'widgets/cards.dart';
 import './pages/register.dart';
@@ -22,20 +28,20 @@ import 'package:sizer/sizer.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main() => runApp(ProviderScope(child: Lugat_Run()));
+void main() => runApp(ProviderScope(child: Lugat()));
 
 // Home Page
 
 // ignore: camel_case_types
-class Lugat_Run extends StatefulWidget {
-  const Lugat_Run({Key? key}) : super(key: key);
+class Lugat extends StatefulWidget {
+  const Lugat({Key? key}) : super(key: key);
 
   @override
   _Lugat_RunState createState() => _Lugat_RunState();
 }
 
 // ignore: camel_case_types
-class _Lugat_RunState extends State<Lugat_Run> {
+class _Lugat_RunState extends State<Lugat> {
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: (context, orientation, deviceType){

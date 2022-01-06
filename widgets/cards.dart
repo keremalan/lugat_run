@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
-import 'package:lugat_run/pages/category.dart';
+import 'package:lugat/pages/category.dart';
 import 'texts.dart';
 import 'buttons.dart';
 import 'package:http/http.dart';

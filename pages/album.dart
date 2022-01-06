@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:lugat_run/main.dart';
+import 'package:lugat/main.dart';
 
 Future<Album> fetchAlbum() async {
   await Future.delayed(Duration(milliseconds: 450));
