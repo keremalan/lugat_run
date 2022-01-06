@@ -178,15 +178,24 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 }
 
-class AddTermPage extends ConsumerWidget {
-  AddTermPage({Key? key}) : super(key: key);
+class AddTermPage extends StatefulWidget {
+  const AddTermPage({Key? key}) : super(key: key);
+
+  @override
+  _AddTermPageState createState() => _AddTermPageState();
+}
+
+class _AddTermPageState extends State<AddTermPage> {
   final _formKey = GlobalKey<FormState>();
   final controller = TextEditingController();
   final Map<String, dynamic> entry = {};
-
+  String termTitle = '';
+  String termMeans = '';
+  String termExample = '';
+  String termDescription = '';
+  String termAuthor = '';
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final TermRepository = ref.watch(termsProvider);
+  Widget build(BuildContext context) {
     return Material(
       child: Container(
         decoration: BoxDecoration(
@@ -215,7 +224,7 @@ class AddTermPage extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Title2Text('Terim adı', '#000000'),
-                            Text('${ref.watch(termsProvider).terms.first.termAuthor}'),
+                            Text('${FirebaseAuth.instance.currentUser!.displayName!}'),
                             Padding(
                               padding: const EdgeInsets.only(bottom: 0),
                               child: TextFormField(
@@ -233,6 +242,11 @@ class AddTermPage extends ConsumerWidget {
                                   border: InputBorder.none,
                                   hintText: "Bilgi eklemek için buraya dokun",
                                 ),
+                                onChanged: (value) {
+                                  setState(() {
+                                    termTitle = value;
+                                  });
+                                },
                                 onSaved: (newValue) {
                                   entry['titleName'] = newValue;
                                 },
@@ -263,6 +277,11 @@ class AddTermPage extends ConsumerWidget {
                               border: InputBorder.none,
                               hintText: "Bilgi eklemek için buraya dokun",
                             ),
+                            onChanged: (value) {
+                            setState(() {
+                              termMeans = value;
+                            });
+                          },
                             onSaved: (newValue) {
                               entry['titleMean'] = newValue;
                             },
@@ -286,6 +305,11 @@ class AddTermPage extends ConsumerWidget {
                               border: InputBorder.none,
                               hintText: "Bilgi eklemek için buraya dokun",
                             ),
+                            onChanged: (value) {
+                              setState(() {
+                                termExample = value;
+                              });
+                            },
                             onSaved: (newValue) {
                               entry['titleExample'] = newValue;
                             },
@@ -310,6 +334,11 @@ class AddTermPage extends ConsumerWidget {
                               border: InputBorder.none,
                               hintText: "Bilgi eklemek için buraya dokun",
                             ),
+                            onChanged: (value) {
+                              setState(() {
+                                termDescription = value;
+                              });
+                            },
                             onSaved: (newValue) {
                               entry['titleDescription'] = newValue;
                               entry['termAuthor'] = FirebaseAuth.instance.currentUser!.displayName!;
@@ -333,16 +362,16 @@ class AddTermPage extends ConsumerWidget {
                                     formState.save();
                                     print(entry);
                                     FirebaseFirestore.instance.collection('terms').add({
-                                      'entry': entry,
+                                      'termTitle': termTitle, 'titleMean': termMeans, 'titleExample': termExample, 'titleDescription': termDescription, 'termAuthor': '${FirebaseAuth.instance.currentUser!.displayName!}', 'isSaved': false,
                                     });
 
 
                                     Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                            const Home()),
-                                  );
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const Home()),
+                                    );
                                   }
                                 },
                                 child: Padding(
