@@ -462,8 +462,7 @@ class _HomePageState extends State<HomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                const TestPage()),
+                                builder: (context) => TestPage()),
                           );
                         },
                         child: Caption1Text("Test Sayfası", "#FFFFFF"),

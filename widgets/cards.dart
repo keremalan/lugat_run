@@ -1,6 +1,10 @@
+import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:lugat/pages/category.dart';
 import 'texts.dart';
 import 'buttons.dart';
@@ -204,7 +208,19 @@ Widget AddTermCard(categoryName, termName, termAuthor, termImageUrl) {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Resim ekle", style: TextStyle(color: Colors.white),),
+                          InkWell(
+                            onTap:  () async {
+                              XFile? xFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+                              if (xFile == null) return;
+
+                              final imagePath = xFile.path;
+                              final uid = FirebaseAuth.instance.currentUser!.uid;
+                              FirebaseStorage.instance.ref('pics').child('$uid.jpg')
+                              .putFile(File(imagePath));
+                              },
+                            child: Text("Resim ekle", style: TextStyle(color: Colors.white),
+                            ),
+                          ),
                         ],
                       ),
                     ),

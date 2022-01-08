@@ -16,126 +16,44 @@ import 'package:lugat/pages/test.dart';
 import 'package:lugat/repository/category_repository.dart';
 import 'package:sizer/sizer.dart';
 import '../repository/term_repository.dart';
-class TestPage extends StatefulWidget {
-  const TestPage({Key? key}) : super(key: key);
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+class TestPage extends StatefulWidget {
   @override
   _TestPageState createState() => _TestPageState();
 }
 
 class _TestPageState extends State<TestPage> {
-  TermRepository termRepository = TermRepository();
-  CategoryRepository categoryRepository = CategoryRepository();
-
+  final Stream<QuerySnapshot> _termsStream = FirebaseFirestore.instance.collection('terms').snapshots();
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            LugatAppBarTerm(),
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 0),
-                child: Column(
-                  children: [
-                    TermCard('${termRepository.terms.first.categoryName}', '${termRepository.terms.first.termName}', '${termRepository.terms.first.termAuthor}', '${termRepository.terms.first.termImageUrl}'),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 22, bottom: 22),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                HeadlineText('${termRepository.terms[0].termName}', '#000000'),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 10),
-                                      child: Caption2Text('Önerileri incele', '#001FC6'),
-                                    ),
-                                    Caption2Text('Katkı yap', '#001FC6'),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 4),
-                                    child: BodyText('Akla gelen ilk anlamı', '#000000'),
-                                  ),
-                                  BodyText('${termRepository.terms.first.termMean}', '#999999'),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 22, bottom: 4),
-                                    child: BodyText('Örnek', '#000000'),
-                                  ),
-                                  BodyText("${termRepository.terms.first.termExample}", '#999999'),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 22, bottom: 4),
-                                    child: BodyText('Ek açıklamalar', '#000000'),
-                                  ),
-                                  BodyText("${termRepository.terms.first.termDescription}", '#999999'),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    BodyText('Katkı sağlayanlar', '#000000'),
-                                  ],
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10, bottom: 20),
-                                  child: Row(
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(left: 10),
-                                        child: Row(
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius: BorderRadius.circular(30),
-                                              child: Image.network("${termRepository.terms.first.contributorAvatar}", height: 20, width: 20),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsets.only(left: 10),
-                                              child: Caption2Text('${termRepository.terms[0].contributorName}', '#BFBFBF'),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+      child: StreamBuilder<QuerySnapshot>(
+        stream: _termsStream,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
+          if (snapshot.hasError) {
+            return Text('Bir şeyler ters gitmiş olmalı.');
+          }
+
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text('Şu anda içerik yükleniyor.');
+          }
+
+          return ListView(
+            children: snapshot.data!.docs.map((DocumentSnapshot document) {
+              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+              return ListTile(
+                title: Text(data['termTitle']),
+                subtitle: Text(data['titleExample']),
+              );
+            }).toList(),
+          );
+        },
       ),
     );
   }
 }
+
 
 class TestTerm extends StatelessWidget {
   const TestTerm({
